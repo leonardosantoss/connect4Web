@@ -36,3 +36,7 @@ table {
     margin-right: auto;
     
 }
+
+td:hover {
+    background-color: skyblue;
+}
