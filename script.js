@@ -1,5 +1,7 @@
-var column = 7, row= 6; // make user determine 
+var column = 7, row= 6; // make user determine the height and width
 
+
+// Generate the board, using a table
 var table = document.createElement("table");
 for (var i=0; i<row;i++){
     var tr = document.createElement('tr');
@@ -15,4 +17,8 @@ for (var i=0; i<row;i++){
     }
     table.appendChild(tr);
 }
-document.body.appendChild(table);
+
+var outsideDiv = document.createElement('div');
+outsideDiv.className = "connect4div";
+outsideDiv.appendChild(table);
+document.body.appendChild(outsideDiv);
