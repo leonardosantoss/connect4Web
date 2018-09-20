@@ -8,12 +8,13 @@ for (var i=0; i<row;i++){
     for(var j=0; j<column ;j++){
         var td = document.createElement('td');
         var div = document.createElement('div');
-        td.className = "square";
-        div.className = "circle";
+        var position = (i*row) + j + 1;   
+        td.className = "square"; 
+        div.className = "circle" + position;
         td.appendChild(div);
         tr.appendChild(td);
         
-    }
+    }   
     table.appendChild(tr);
 }
 
