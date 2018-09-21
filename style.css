@@ -36,8 +36,8 @@ h1 {
 }
 
 
-/*Select everything that starts with square*/
-td[class*='square'] {
+
+.square {
     width: 60px;
     height: 60px;
     border: 3px solid black;
@@ -46,6 +46,7 @@ td[class*='square'] {
 
 }
 
+/*Select everything that starts with circle*/
 div[class*='circle'] {
     background-color: white;
     border-radius: 30px;
