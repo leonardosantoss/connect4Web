@@ -1,22 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link type="text/css" rel="stylesheet" href="style.css" /> 
         <meta charset="UTF-8">
         <title>Connect 4 game</title>
+        
+         <div class="connect4header">
+        <h1>Connect 4 </h1>
+        </div>
+        
     </head>
 
     <body>
-        <div class="connect4header">
-        <h1>Connect 4 </h1>
+        
+        <div class="buttonsDiv">
+        
+        <div class="divButton">
+        <button id="instructions" type="button" class="btn btn-primary btn-block">
+            <p>Game Instructions</p>
+        </button>
+        </div>  
+            
+        </div>    
+        <div id="myModal" class="modal">
+            <div class ="modal-content">
+                <span class="close">&times;</span>
+                <p>Game Instructions</p>
+                <p>All the detailed game instructions!</p>
+            </div>
         </div>
-        <table id="connect4"><table>
-            
-            <table>
-                <tr>
-                    <td class="outside"><div class="divclass"></div></td></tr></table>    
-            
-            
     </body>
     
     <script src="script.js"></script>
