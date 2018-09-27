@@ -2,21 +2,43 @@
 <html lang="en">
     <head>
         <link type="text/css" rel="stylesheet" href="style.css" /> 
+        <link type="text/css" rel="stylesheet" href="header.css" /> 
+
         <meta charset="UTF-8">
         <title>Connect 4 game</title>
+        
     </head>
 
     <body>
-        <div class="connect4header">
-        <h1>Connect 4 </h1>
+    <div class="wrapper">
+        <!-- Header -->
+        <header>
+            <h1>Connect 4 </h1>
+        </header>
+
+        <nav>
+            <ul class="main_menu">
+                <li><a id="instructions" href="#">Instructions</a></li>
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Scoreboard</a></li>
+            </ul>
+        </nav>
+        
+        <!-- left panel -->
+        <div class="buttonsDiv">
+            
+        </div> 
+
+        <div id="myModal" class="modal">
+            <div class ="modal-content">
+                <span class="close">&times;</span>
+                <p>Game Instructions</p>
+                <p>All the detailed game instructions!</p>
+            </div>
         </div>
-        <table id="connect4"><table>
-            
-            <table>
-                <tr>
-                    <td class="outside"><div class="divclass"></div></td></tr></table>    
-            
-            
+
+        <!-- board -->
+    </div>
     </body>
     
     <script src="script.js"></script>
