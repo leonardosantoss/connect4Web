@@ -1,5 +1,8 @@
 var column = 7, row= 6; // make user determine the height and width
 
+var player = true; // choose player that starts
+
+
 function generateBoard(row, column){
     
     // Generate the board, using a table
@@ -10,21 +13,42 @@ function generateBoard(row, column){
         for(var j=0; j<column ;j++){
             var td = document.createElement('td');
             var div = document.createElement('div');
-            var position = (i*row) + j + 1;   
-            td.className = "square"; 
-            div.className = "circle" + position;
+            var position = (i*(row+1)) + j;   
+            td.className = "square";
+            td.id = position;
+            div.className = "circle";
+            div.id = "cir_" + position;
+            td.onclick = function (){
+                //verify position in the column
+                //verify what color
+                var circle = document.getElementById("cir_"+ this.id);
+                if(player){
+                   circle.style.background = "red"; 
+    
+                }
+                else{
+                    circle.style.background = "blue";
+                }     
+                player = !player;
+                
+            }
             td.appendChild(div);
             tr.appendChild(td);
+            
 
         }   
         table.appendChild(tr);
     }
 
-    var outsideDiv = document.createElement('div');
-    outsideDiv.className = "connect4div";
+    var outsideDiv = document.getElementsByClassName('connect4div')[0];
     outsideDiv.appendChild(table);
-    document.body.appendChild(outsideDiv);  
 
+}
+
+
+
+function createMatrix(row, column){
+  
 }
 
 generateBoard(row,column);
