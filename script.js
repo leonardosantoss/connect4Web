@@ -1,5 +1,6 @@
 var column = 7, row= 6; // make user determine the height and width
 var player = true; // choose player that starts
+var win = false;
 var gameMatrix = createMatrix(row,column);
 
 function generateBoard(row, column){
@@ -22,15 +23,23 @@ function generateBoard(row, column){
                 if(emptyPosition !== -1){
                     var circle = document.getElementById("cir_"+ emptyPosition);
                     if(player){
-                        circle.style.background = "red"; 
+                        circle.style.background = "red";
+                        win = checkWin(emptyPosition, "X");
                     }
                     else{
                         circle.style.background = "blue";
-                    }     
+                        win = checkWin(emptyPosition, "O");
+                    }
                     player = !player;
+                    if(win){
+                        setTimeout(function() {
+                            alert("Win");
+                        }, 0);
+                    }
                        
                 }
             }
+            
             td.appendChild(div);
             tr.appendChild(td);
             
@@ -83,12 +92,54 @@ function findPosition(clickedCircle){
     
 }
 
+function checkWin(lastPlayPosition, typeToCheck){
+    var sum = 0;
+    sum += vertical(lastPlayPosition, typeToCheck);
+    
+    if(sum >= 3){
+        return true;
+    }
+     
+}
 
 
-generateBoard(row,column);
+//Checks if the player who last played won vertically
+function vertical(lastPlayPosition, typeToCheck){
+    var col = lastPlayPosition % column;
+    var currentRow  = Math.floor(lastPlayPosition/row);
+    var sum = 0;
+    
+    //down
+    for(i=1;i<4;i++){
+        if(currentRow+i>row-1){
+            break;
+        }
+        else if(gameMatrix[currentRow+i][col] !== typeToCheck){
+            break;
+        } 
+        else{
+            sum++;
+        }
+    }
+
+    //up
+    for(i=1;i<4;i++){
+        if(currentRow-i<0){
+            break;
+        }
+        else if(gameMatrix[currentRow-i][col] !== typeToCheck){
+            break;
+        } 
+        else{
+            sum++;
+        }
+    }
+    
+    return sum;
+}
 
 
-
+generateBoard(row, column);
 
 
 // button for the instructions option
