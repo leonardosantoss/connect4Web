@@ -73,19 +73,19 @@ function createMatrix(row, column){
 // returns -1 in case the column  is full
 
 function findPosition(clickedCircle){
-    col = clickedCircle % column; //determine which column was clicked
+    currentCol = clickedCircle % column; //determine which column was clicked
     for(var i = row-1; i>=0; i--){
-        if(gameMatrix[i][col] === "-"){
+        if(gameMatrix[i][currentCol] === "-"){
             if(player){
-                gameMatrix[i][col] = "X";
-                return ((i*column)+col);
+                gameMatrix[i][currentCol] = "X";
+                return ((i*column)+currentCol);
             }
             else{
-                gameMatrix[i][col] = "O";
-                return ((i*column)+col);
+                gameMatrix[i][currentCol] = "O";
+                return ((i*column)+currentCol);
             }
         }
-        else if(i===0 && gameMatrix[i][col]){
+        else if(i===0 && gameMatrix[i][currentCol]){
             return -1;
         }
     }
@@ -94,8 +94,8 @@ function findPosition(clickedCircle){
 
 function checkWin(lastPlayPosition, typeToCheck){
     var sum = 0;
-    sum = Math.max(vertical(lastPlayPosition, typeToCheck), horizontal(lastPlayPosition, typeToCheck));
-    
+    sum = Math.max(vertical(lastPlayPosition, typeToCheck), horizontal(lastPlayPosition, typeToCheck), diagonal_negative(lastPlayPosition,typeToCheck), diagonal_positive(lastPlayPosition,typeToCheck));
+
     if(sum >= 3){
         return true;
     }
@@ -105,29 +105,31 @@ function checkWin(lastPlayPosition, typeToCheck){
 
 //Checks if the player who last played won vertically
 function vertical(lastPlayPosition, typeToCheck){
-    var col = lastPlayPosition % column;
-    var currentRow  = Math.floor(lastPlayPosition/row);
+    var currentCol = lastPlayPosition % column;
+    var currentRow  = Math.floor(lastPlayPosition/column);
     var sum = 0;
-    
+
+    console.log(currentCol, currentRow);
+
     //down
     for(i=1;i<4;i++){
         if(currentRow+i>row-1){
             break;
         }
-        else if(gameMatrix[currentRow+i][col] !== typeToCheck){
+        else if(gameMatrix[currentRow+i][currentCol] !== typeToCheck){
             break;
         } 
         else{
             sum++;
         }
     }
-
+    
     //up
     for(i=1;i<4;i++){
         if(currentRow-i<0){
             break;
         }
-        else if(gameMatrix[currentRow-i][col] !== typeToCheck){
+        else if(gameMatrix[currentRow-i][currentCol] !== typeToCheck){
             break;
         } 
         else{
@@ -135,22 +137,23 @@ function vertical(lastPlayPosition, typeToCheck){
         }
     }
     
+    console.log(lastPlayPosition + " ver: " + sum);
     return sum;
 }
 
 function horizontal (lastPlayPosition, typeToCheck) {
     var sum = 0;
-    var col = lastPlayPosition % column;
+    var currentCol = lastPlayPosition % column;
     var currentRow = Math.floor(lastPlayPosition/column);
     
-    console.log(col, currentRow);
+    console.log(currentCol, currentRow);
     
     // right
        for(i=1;i<4;i++){
-        if(col+i>6){
+        if(currentCol+i>column-1){
             break;
         }
-        else if(gameMatrix[currentRow][col+i] !== typeToCheck){
+        else if(gameMatrix[currentRow][currentCol+i] !== typeToCheck){
             break;
         } 
         else{
@@ -160,21 +163,94 @@ function horizontal (lastPlayPosition, typeToCheck) {
     
     //left
     for(i=1;i<4;i++){
-        if(col-i<0){
+        if(currentCol-i<0){
             break;
         }
-        else if(gameMatrix[currentRow][col-i] !== typeToCheck){
+        else if(gameMatrix[currentRow][currentCol-i] !== typeToCheck){
             break;
         } 
         else{
             sum++;
         }
     }
+
+    console.log("hor: " + sum);
     return sum;
-    
 }
 
+function diagonal_positive (lastPlayPosition, typeToCheck) {
+    var sum = 0;
+    var currentCol = lastPlayPosition % column;
+    var currentRow = Math.floor(lastPlayPosition/column);
+    
+    console.log(currentCol, currentRow);
+    
+    // up
+    for(i=1;i<4;i++){
+        if(currentRow-i<0 || currentCol+i>column-1){
+            break;
+        }
+        else if(gameMatrix[currentRow-i][currentCol+i] !== typeToCheck){
+            break;
+        } 
+        else{
+            sum++;
+        }
+    }
+    
+    //down
+    for(i=1;i<4;i++){
+        if(currentRow+i>row-1 || currentCol-i<0){
+            break;
+        }
+        else if(gameMatrix[currentRow+i][currentCol-i] !== typeToCheck){
+            break;
+        } 
+        else{
+            sum++;
+        }
+    }
 
+    console.log("pdia: " + sum);
+    return sum;
+}
+
+function diagonal_negative (lastPlayPosition, typeToCheck) {
+    var sum = 0;
+    var currentCol = lastPlayPosition % column;
+    var currentRow = Math.floor(lastPlayPosition/column);
+    
+    console.log(currentCol, currentRow);
+    
+    // up
+    for(i=1;i<4;i++){
+        if(row-i<0 || currentCol-i<0){
+            break;
+        }
+        else if(gameMatrix[currentRow-i][currentCol-i] !== typeToCheck){
+            break;
+        } 
+        else{
+            sum++;
+        }
+    }
+    
+    //down
+    for(i=1;i<4;i++){
+        if(currentRow+i>row-1 || currentCol+i>column-1){
+            break;
+        }
+        else if(gameMatrix[currentRow+i][currentCol+i] !== typeToCheck){
+            break;
+        } 
+        else{
+            sum++;
+        }
+    }
+    
+    console.log("ndia: " + sum);
+    return sum;
+}
 
 
 generateBoard(row, column);
