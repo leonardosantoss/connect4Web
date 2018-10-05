@@ -94,7 +94,7 @@ function findPosition(clickedCircle){
 
 function checkWin(lastPlayPosition, typeToCheck){
     var sum = 0;
-    sum += vertical(lastPlayPosition, typeToCheck);
+    sum = Math.max(vertical(lastPlayPosition, typeToCheck), horizontal(lastPlayPosition, typeToCheck));
     
     if(sum >= 3){
         return true;
@@ -137,6 +137,44 @@ function vertical(lastPlayPosition, typeToCheck){
     
     return sum;
 }
+
+function horizontal (lastPlayPosition, typeToCheck) {
+    var sum = 0;
+    var col = lastPlayPosition % column;
+    var currentRow = Math.floor(lastPlayPosition/column);
+    
+    console.log(col, currentRow);
+    
+    // right
+       for(i=1;i<4;i++){
+        if(col+i>6){
+            break;
+        }
+        else if(gameMatrix[currentRow][col+i] !== typeToCheck){
+            break;
+        } 
+        else{
+            sum++;
+        }
+    }
+    
+    //left
+    for(i=1;i<4;i++){
+        if(col-i<0){
+            break;
+        }
+        else if(gameMatrix[currentRow][col-i] !== typeToCheck){
+            break;
+        } 
+        else{
+            sum++;
+        }
+    }
+    return sum;
+    
+}
+
+
 
 
 generateBoard(row, column);
