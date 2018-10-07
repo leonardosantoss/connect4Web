@@ -66,6 +66,14 @@ function createMatrix(row, column){
     return matrix;
 }
 
+function pos_gameMatrix(i, j){
+    return gameMatrix[i][j];
+}
+
+function update_gameMatrix(i, j, x){
+    return gameMatrix[i][j] = x;
+}
+
 // Player true represented by X on the gameMatrix
 // Player false represented by O on the gameMatrix
 // Function determines the correct position for the move to be played
@@ -75,17 +83,17 @@ function createMatrix(row, column){
 function findPosition(clickedCircle){
     currentCol = clickedCircle % column; //determine which column was clicked
     for(var i = row-1; i>=0; i--){
-        if(gameMatrix[i][currentCol] === "-"){
+        if(pos_gameMatrix(i,currentCol) === "-"){
             if(player){
-                gameMatrix[i][currentCol] = "X";
+                update_gameMatrix(i,currentCol,"X");
                 return ((i*column)+currentCol);
             }
             else{
-                gameMatrix[i][currentCol] = "O";
+                update_gameMatrix(i,currentCol,"O");
                 return ((i*column)+currentCol);
             }
         }
-        else if(i===0 && gameMatrix[i][currentCol]){
+        else if(i===0 && pos_gameMatrix(i,currentCol)){
             return -1;
         }
     }
@@ -116,7 +124,7 @@ function vertical(lastPlayPosition, typeToCheck){
         if(currentRow+i>row-1){
             break;
         }
-        else if(gameMatrix[currentRow+i][currentCol] !== typeToCheck){
+        else if(pos_gameMatrix(currentRow+i,currentCol) !== typeToCheck){
             break;
         } 
         else{
@@ -129,7 +137,7 @@ function vertical(lastPlayPosition, typeToCheck){
         if(currentRow-i<0){
             break;
         }
-        else if(gameMatrix[currentRow-i][currentCol] !== typeToCheck){
+        else if(pos_gameMatrix(currentRow-i,currentCol) !== typeToCheck){
             break;
         } 
         else{
@@ -153,7 +161,7 @@ function horizontal (lastPlayPosition, typeToCheck) {
         if(currentCol+i>column-1){
             break;
         }
-        else if(gameMatrix[currentRow][currentCol+i] !== typeToCheck){
+        else if(pos_gameMatrix(currentRow,currentCol+i) !== typeToCheck){
             break;
         } 
         else{
@@ -166,7 +174,7 @@ function horizontal (lastPlayPosition, typeToCheck) {
         if(currentCol-i<0){
             break;
         }
-        else if(gameMatrix[currentRow][currentCol-i] !== typeToCheck){
+        else if(pos_gameMatrix(currentRow,currentCol-i) !== typeToCheck){
             break;
         } 
         else{
@@ -190,7 +198,7 @@ function diagonal_positive (lastPlayPosition, typeToCheck) {
         if(currentRow-i<0 || currentCol+i>column-1){
             break;
         }
-        else if(gameMatrix[currentRow-i][currentCol+i] !== typeToCheck){
+        else if(pos_gameMatrix(currentRow-i, currentCol+i) !== typeToCheck){
             break;
         } 
         else{
@@ -203,7 +211,7 @@ function diagonal_positive (lastPlayPosition, typeToCheck) {
         if(currentRow+i>row-1 || currentCol-i<0){
             break;
         }
-        else if(gameMatrix[currentRow+i][currentCol-i] !== typeToCheck){
+        else if(pos_gameMatrix(currentRow+i, currentCol-i) !== typeToCheck){
             break;
         } 
         else{
@@ -227,7 +235,7 @@ function diagonal_negative (lastPlayPosition, typeToCheck) {
         if(row-i<0 || currentCol-i<0){
             break;
         }
-        else if(gameMatrix[currentRow-i][currentCol-i] !== typeToCheck){
+        else if(pos_gameMatrix(currentRow-i, currentCol-i) !== typeToCheck){
             break;
         } 
         else{
@@ -240,7 +248,7 @@ function diagonal_negative (lastPlayPosition, typeToCheck) {
         if(currentRow+i>row-1 || currentCol+i>column-1){
             break;
         }
-        else if(gameMatrix[currentRow+i][currentCol+i] !== typeToCheck){
+        else if(pos_gameMatrix(currentRow+i, currentCol+i) !== typeToCheck){
             break;
         } 
         else{
