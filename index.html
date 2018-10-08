@@ -19,28 +19,40 @@
         <nav>
             <ul class="main_menu">
                 <li><a id="instructions" href="#">Instructions</a></li>
-                <li><a href="#">Profile</a></li>
+                <li><a id="profile" href="#">Profile</a></li>
                 <li><a href="#">Scoreboard</a></li>
             </ul>
         </nav>
         
         <!-- left panel -->
-        <div class="buttonsDiv">
-            
-        </div> 
-
-        <div id="myModal" class="modal">
+        <div id="instructionsModal" class="modal">
             <div class ="modal-content">
-                <span class="close">&times;</span>
+                <span id="instructionsSpan" class="close">&times;</span>
                 <p>Game Instructions</p>
                 <p>All the detailed game instructions!</p>
             </div>
         </div>
 
+        <div id="profileModal" class="modal">
+            <div class ="modal-content">
+                <span id="profileSpan" class="close">&times;</span>
+                <p>Profile Settings</p>
+                <p></p>
+            </div>
+        </div>
+        
+        <div class="buttonsDiv"></div> 
+
         <!-- board -->
         <div class="connect4div"></div>
+
+        <!-- Test -->
+        <a id="add1" href="#">Add 1</a>
     </div>
     </body>
-    
+
+    <script src="board.js"></script>
     <script src="script.js"></script>
+    
+
 </html>
