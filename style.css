@@ -27,10 +27,7 @@ body {
 .square {
     width: 60px;
     height: 60px;
-    border: 3px solid black;
-    background-color: gray;
-    margin: 0px;
-
+    margin: 2px;
 }
 
 /*Select everything that starts with circle*/
@@ -42,11 +39,13 @@ div[class*='circle'] {
 }
 
 table {
+    background-color: gray;
     overflow: hidden;
+    border-radius: 4px;
 }
 
 td:hover {
-    background-color: royalblue;
+    background-color: royalblue !important;
 }
 
 td, th {
@@ -56,7 +55,7 @@ td, th {
 td:hover::after{
   content: "";
   position: absolute;
-  background-color: royalblue;
+  background-color: royalblue !important;
   left: 0;
   top: -5000px;
   height: 10000px;
