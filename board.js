@@ -8,6 +8,7 @@ function generateBoard(row, column){
     
     // Generate the board, using a table
     var table = document.createElement("table");
+    table.className= "boardTable";
     for (var i=0; i<row;i++){
         var tr = document.createElement('tr');
 

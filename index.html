@@ -41,13 +41,58 @@
             </div>
         </div>
         
-        <div class="buttonsDiv"></div> 
+        
+
+        <div class="buttonsDiv">
+
+            <table class="tableSelector">
+                <tr>
+                    <td><p class="pChoose">Play against: </p></td>
+                    <td><select size = 1 style="max-width:90%;">
+                            <option>Bot</option>
+                            <option>Player</option>
+                        </select></td>
+                </tr>
+                <tr>
+                    <td><p class="pChoose">Size:</p></td>
+                    <td>
+                        <input type="number" min="4" max="8" placeholder="4">
+                    </td>
+                    <td>
+                        <input type="number" min="4" max="8" placeholder="4">
+                    </td>
+                </tr>
+                <tr>
+                    <td><p class="pChoose">IA Level:</p></td>
+                    <td>
+                        <input type="number" min="1" max="8" placeholder="1">
+                    </td>
+                </tr>
+                <tr>
+                        <td><p class="pChoose">First to play:</p></td>
+                        <td>
+                                <select size = 1 class="selectWhoStarts">
+                                        <option>Me</option>
+                                        <option>Opponent</option>
+                                </select>
+                        </td>
+                </tr>
+                <tr>
+                    <td><p class="pChoose">Color:</p></td>
+                    <td>
+                        <input type="color" name="favcolor" value="#ff0000">
+                    </td>    
+                </tr>
+
+            </table>
+
+            <input type="submit">
+
+        </div> 
 
         <!-- board -->
         <div class="connect4div"></div>
 
-        <!-- Test -->
-        <a id="add1" href="#">Add 1</a>
     </div>
     </body>
 
