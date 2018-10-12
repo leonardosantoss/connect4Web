@@ -86,6 +86,26 @@ td:hover::after{
     width: 80%;
 }
 
+.profile-li {
+    margin-bottom: 5px;
+    margin-right: 5px;  
+    display: inline-block;
+}
+
+.profile-text {
+    width: 110px;
+    display: inline-block;
+    
+}
+
+input[type=submit] {
+    font-size: 10px;
+    line-height: 18px;
+    float: left;
+    display: block;
+    height: 100px; /* or whatever height necessary */
+  }
+
 /* The Close Button */
 .close {
     color: gray;
