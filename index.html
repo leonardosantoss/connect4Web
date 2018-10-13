@@ -48,7 +48,7 @@
             <table class="tableSelector">
                 <tr>
                     <td><p class="pChoose">Play against: </p></td>
-                    <td><select size = 1 style="max-width:90%;">
+                    <td><select size = 1 style="max-width:90%;" id="against">
                             <option>Bot</option>
                             <option>Player</option>
                         </select></td>
@@ -56,22 +56,22 @@
                 <tr>
                     <td><p class="pChoose">Size:</p></td>
                     <td>
-                        <input type="number" min="4" max="8" placeholder="4">
+                        <input type="number" min="4" max="8" id="sizeRow">
                     </td>
                     <td>
-                        <input type="number" min="4" max="8" placeholder="4">
+                        <input type="number" min="4" max="8" id="sizeCol">
                     </td>
                 </tr>
                 <tr>
                     <td><p class="pChoose">IA Level:</p></td>
                     <td>
-                        <input type="number" min="1" max="8" placeholder="1">
+                        <input type="number" min="1" max="8" id="ia">
                     </td>
                 </tr>
                 <tr>
                         <td><p class="pChoose">First to play:</p></td>
                         <td>
-                                <select size = 1 class="selectWhoStarts">
+                                <select size = 1 class="selectWhoStarts" id="whoStarts">
                                         <option>Me</option>
                                         <option>Opponent</option>
                                 </select>
@@ -80,13 +80,13 @@
                 <tr>
                     <td><p class="pChoose">Color:</p></td>
                     <td>
-                        <input type="color" name="favcolor" value="#ff0000">
+                        <input type="color" name="favcolor" value="#ff0000" id="color">
                     </td>    
                 </tr>
 
             </table>
 
-            <input type="submit">
+            <input id="submitSelectors" type="submit">
 
         </div> 
 
