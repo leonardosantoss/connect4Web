@@ -14,7 +14,7 @@ function generateBoard(row, column){
         for(var j=0; j<column ;j++){
             var td = document.createElement('td');
             var div = document.createElement('div');
-            position = i*(row+(column-row)) + j;
+            position = i*(column) + j;
             td.className = "square";
             td.id = position;
             div.className = "circle";
