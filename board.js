@@ -50,7 +50,7 @@ function generateBoard(row, column){
         table.appendChild(tr);
     }
 
-    var outsideDiv = document.getElementsByClassName('connect4div')[0];
+    var outsideDiv = document.getElementById('connect4div');
     outsideDiv.appendChild(table);
 
 }

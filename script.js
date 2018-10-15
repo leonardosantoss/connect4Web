@@ -53,8 +53,8 @@ submitSelectors.onclick = function (){
     }
     else {
         //success, board can be safely generated
-        var table = document.getElementById('gameBoard');       //DELETING THE TABLE DOESNT WORK PROPERLY
-        if(table != null){
+        var table = document.getElementById('connect4div');    
+        if(table.innerHTML != null){
             table.innerHTML = "";
         }
         row = sizeRow;
