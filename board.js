@@ -1,30 +1,31 @@
-var column = 7, row= 6; // make user determine the height and width
 var player = true; // choose player that starts
 var win = false;
-var gameMatrix = createMatrix(row,column);
 var unit_vector = [[1,0], [0,1], [-1,-1], [-1,1]]; // horizontal, vertical, negative diagonal, positive diagonal
 
+
 function generateBoard(row, column){
-    
     // Generate the board, using a table
     var table = document.createElement("table");
+    table.className= "boardTable";
+    table.id="gameBoard";
     for (var i=0; i<row;i++){
         var tr = document.createElement('tr');
-
+        tr.className = "boardTr";
         for(var j=0; j<column ;j++){
             var td = document.createElement('td');
             var div = document.createElement('div');
-            var position = (i*(row+1)) + j;   
+            position = i*(column) + j;
             td.className = "square";
             td.id = position;
             div.className = "circle";
             div.id = "cir_" + position;
             td.onclick = function (){ 
                 var emptyPosition = findPosition(this.id);
+
                 if(emptyPosition !== -1){
                     var circle = document.getElementById("cir_"+ emptyPosition);
                     if(player){
-                        circle.style.background = "red";
+                        circle.style.background = playerColor;
                         win = checkWin(emptyPosition, "X");
                     }
                     else{
@@ -49,7 +50,7 @@ function generateBoard(row, column){
         table.appendChild(tr);
     }
 
-    var outsideDiv = document.getElementsByClassName('connect4div')[0];
+    var outsideDiv = document.getElementById('connect4div');
     outsideDiv.appendChild(table);
 
 }
@@ -61,6 +62,7 @@ function createMatrix(row, column){
   for(var i=0;i<row;i++){
       matrix[i] = [];
       for(var j=0; j<column;j++){
+          
           matrix[i][j] = "-";
       }
   }
@@ -82,6 +84,7 @@ function update_gameMatrix(i, j, x){
 // returns -1 in case the column  is full
 
 function findPosition(clickedCircle){
+
     currentCol = clickedCircle % column; //determine which column was clicked
     for(var i = row-1; i>=0; i--){
         if(pos_gameMatrix(i,currentCol) === "-"){
@@ -126,8 +129,6 @@ function checkSum(lastPlayPosition, typeToCheck, vector){
     var sum = 0;
     var cond0, cond1;
     
-    console.log(currentCol, currentRow);
-
     for(i=1;i<4;i++){
         cond0 = currentRow+i*vector[0] > row-1    || currentRow+i*vector[0] < 0;
         cond1 = currentCol+i*vector[1] > column-1 || currentCol+i*vector[1] < 0;
@@ -156,6 +157,6 @@ function checkSum(lastPlayPosition, typeToCheck, vector){
         }
     }
     
-    console.log(lastPlayPosition + " " + vector[0]+ "," + vector[1] + ": " + sum);
+    //console.log(lastPlayPosition + " " + vector[0]+ "," + vector[1] + ": " + sum);
     return sum;
 }
