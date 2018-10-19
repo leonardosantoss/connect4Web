@@ -3,7 +3,7 @@ var win = false;
 const unit_vector = [[1,0], [0,1], [-1,-1], [-1,1]]; // horizontal, vertical, negative diagonal, positive diagonal
 
 
-function generateBoard(row, column){
+function generateBoard(){
     // Generate the board, using a table
     const table = document.createElement("table");
     table.className= "boardTable";
@@ -20,25 +20,29 @@ function generateBoard(row, column){
             div.className = "circle";
             div.id = "cir_" + position;
             td.onclick = function (){ 
-                const emptyPosition = findPosition(this.id);
-
+                const currentRow = findRow(this.id);
+                const currentCol = this.id % column;
+                const emptyPosition = (currentRow*column)+currentCol;
+                
                 if(emptyPosition !== -1){
+                    play(currentRow,currentCol);
+
                     const circle = document.getElementById("cir_"+ emptyPosition);
                     if(player){
                         circle.style.background = playerColor;
-                        win = checkWin(emptyPosition, "X");
+                        win = checkWin(currentRow, currentCol, "X");
                     }
                     else{
                         circle.style.background = "blue";
-                        win = checkWin(emptyPosition, "O");
+                        win = checkWin(currentRow, currentCol, "O");
                     }
-                    player = !player;
+                    
                     if(win){
                         setTimeout(function() {
                             alert("Win");
                         }, 0);
                     }
-                       
+                    player = !player;
                 }
             }
             
@@ -57,7 +61,7 @@ function generateBoard(row, column){
 
 
 // returns a matrix with all positions with a "-" (means its empty)
-function createMatrix(row, column){
+function createMatrix(){
   let matrix = [];
   for(let i=0;i<row;i++){
       matrix[i] = [];
@@ -83,11 +87,13 @@ function update_gameMatrix(i, j, x){
 // in the correct column, based on where the player clicked
 // returns -1 in case the column  is full
 
-function findPosition(clickedCircle){
+function findRow(clickedCircle){
 
     let currentCol = clickedCircle % column; //determine which column was clicked
     for(let i = row-1; i>=0; i--){
         if(pos_gameMatrix(i,currentCol) === "-"){
+            return i;
+            /*
             if(player){
                 update_gameMatrix(i,currentCol,"X");
                 return ((i*column)+currentCol);
@@ -96,6 +102,7 @@ function findPosition(clickedCircle){
                 update_gameMatrix(i,currentCol,"O");
                 return ((i*column)+currentCol);
             }
+            */
         }
         else if(i===0 && pos_gameMatrix(i,currentCol)){
             return -1;
@@ -105,12 +112,12 @@ function findPosition(clickedCircle){
 }
 
 
-function checkWin(lastPlayPosition, typeToCheck){
+function checkWin(currentRow, currentCol, typeToCheck){
     let sum = 0;
     let x;
     
     for(let i = 0;i<4;i++){
-        x = checkSum(lastPlayPosition, typeToCheck, unit_vector[i]);
+        x = checkSum(currentRow, currentCol, typeToCheck, unit_vector[i]);
         if(x > sum)
             sum = x;
     }
@@ -123,9 +130,7 @@ function checkWin(lastPlayPosition, typeToCheck){
      
 }
 
-function checkSum(lastPlayPosition, typeToCheck, vector){
-    const currentCol = lastPlayPosition % column;
-    const currentRow  = Math.floor(lastPlayPosition/column);
+function checkSum(currentRow, currentCol, typeToCheck, vector){
     let sum = 0;
     let cond0, cond1;
     
@@ -158,5 +163,31 @@ function checkSum(lastPlayPosition, typeToCheck, vector){
     }
     
     //console.log(lastPlayPosition + " " + vector[0]+ "," + vector[1] + ": " + sum);
+    return sum;
+}
+
+function legalmoves() {
+    let moves = []
+    for(let i = 0;i<column;i++){
+        if(pos_gameMatrix(0,i)=="-") moves.push(i);
+    }
+    return moves;
+}
+
+function play(currentRow, currentCol){
+    console.log(currentRow,currentCol);
+    if(player)
+        update_gameMatrix(currentRow,currentCol, "X");
+    else
+        update_gameMatrix(currentRow,currentCol, "O");
+}
+
+function rmplay(currentRow, currentCol){
+    update_gameMatrix(currentRow,currentCol, "-");
+}
+
+function eval(){
+    let sum = 0;
+
     return sum;
 }
