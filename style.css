@@ -77,6 +77,8 @@ div[class*='circle'] {
     background-color: rgba(0,0,0,0.4); 
 }
 
+
+
 .modal-content {
     background-color: whitesmoke;
     margin: auto;
@@ -84,11 +86,18 @@ div[class*='circle'] {
     border: 3px solid gray;
     border-radius: 3px;
     width: 80%;
+   
+}
+
+.modal-content-profile{
+    height:200px;
+    width: 850px;
 }
 
 .profile-li {
     margin-bottom: 5px;
-    margin-right: 5px;  
+    margin-top:20px;
+    margin-right: 50px;  
     display: inline-block;
 }
 
@@ -145,11 +154,22 @@ div[class*='circle'] {
     height: 85%;
 }
 
-input[type=submit] {
+.submitSelector {
     font-size: 15px;
     line-height: 18px;
     float:right;
     margin-right: 15px;
     display:block;
 
+}
+
+.submitProfile {
+    font-size: 25px;
+    line-height: 18px;
+    float:right;
+    margin-right: 15px;
+    display:block;
+    margin-bottom: 80px;
+    margin-right:50px;
+   
 }
