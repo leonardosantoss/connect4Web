@@ -98,13 +98,6 @@ td:hover::after{
     
 }
 
-input[type=submit] {
-    font-size: 10px;
-    line-height: 18px;
-    float: left;
-    display: block;
-    height: 100px; /* or whatever height necessary */
-  }
 
 /* The Close Button */
 .close {
