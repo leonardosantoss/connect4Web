@@ -77,8 +77,7 @@ submitSelectors.onclick = function (){
         generateBoard(Number(row), Number(column)); //row and column were strings, make sure to change to number
         gameMatrix = createMatrix(Number(row),Number(column));
     }
-
-
+}
 
 
 
