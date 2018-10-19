@@ -10,7 +10,9 @@
     </head>
 
     <body>
+            
     <div class="wrapper">
+        
         <!-- Header -->
         <header>
             <h1>Connect 4 </h1>
@@ -18,9 +20,9 @@
 
         <nav>
             <ul class="main_menu">
-                <li><a id="instructions" href="#">Instructions</a></li>
-                <li><a id="profile" href="#">Profile</a></li>
-                <li><a href="#">Scoreboard</a></li>
+                <li><a id="instructionsButton" href="#">Instructions</a></li>
+                <li><a id="profileButton" href="#">Profile</a></li>
+                <li><a id="scoreButton" href="#">Scoreboard</a></li>
             </ul>
         </nav>
         
@@ -37,11 +39,28 @@
             <div class ="modal-content">
                 <span id="profileSpan" class="close">&times;</span>
                 <p>Profile Settings</p>
-                <p></p>
+                <ul>
+                    <li class = "profile-li"><span class="profile-text">Username</span> <input type=text></li> <br>
+                    <li class = "profile-li"><span class="profile-text">Old Password:</span> <input type="password"></li>
+                    <li class = "profile-li"><span class="profile-text">Password:</span> <input type="password"></li>
+                    <li class = "profile-li"><span class="profile-text">New Password:</span> <input type="password"></li>
+                    <br>
+                    <li class = "profile-li"><input type="submit"></li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="scoreModal" class="modal">
+            <div class ="modal-content">
+                <span id="scoreSpan" class="close">&times;</span>
+                <p>Scoreboard </p>
+                
+                <div id="scorediv"></div>
             </div>
         </div>
         
-        <div class="buttonsDiv"></div> 
+        <div class="buttonsDiv">
+        </div> 
 
         <!-- board -->
         <div class="connect4div"></div>
@@ -49,6 +68,8 @@
         <!-- Test -->
         <a id="add1" href="#">Add 1</a>
     </div>
+
+    
     </body>
 
     <script src="board.js"></script>
