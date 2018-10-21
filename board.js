@@ -1,6 +1,7 @@
 var player; // choose player that starts
 const unit_vector = [[1,0], [0,1], [-1,-1], [-1,1]]; // horizontal, vertical, negative diagonal, positive diagonal
 var bestplayCol;
+var vec_np;
 
 function update_board_pos(currentRow, currentCol){
     const emptyPosition = (currentRow*column)+currentCol;
@@ -46,6 +47,20 @@ function generateBoard(){
             td.id = position;
             div.className = "circle";
             div.id = "cir_" + position;
+            td.onmouseover = function (){
+                const currentCol = this.id % column;
+                for(let i=0;i<row;i++){
+                    const square = document.getElementById(i*column+currentCol);
+                    square.style.background = "lightgrey";
+                }
+            }
+            td.onmouseleave = function (){
+                const currentCol = this.id % column;
+                for(let i=0;i<row;i++){
+                    const square = document.getElementById(i*column+currentCol);
+                    square.style.background = "gray";
+                }
+            }
             td.onclick = function (){ 
                 let currentCol = this.id % column;
                 let currentRow = findRow(currentCol);
@@ -55,7 +70,7 @@ function generateBoard(){
                     let win = update_board_pos(currentRow, currentCol);                    
                     player = !player;
 
-                    currentCol = alfabeta(7);
+                    currentCol = alfabeta(9);
                     currentRow = findRow(currentCol);
 
                     if(currentRow != -1 && !win){
@@ -109,14 +124,8 @@ function update_gameMatrix(i, j, x){
 // returns -1 in case the column  is full
 
 function findRow(currentCol){
-    for(let i = row-1; i>=0; i--){
-        if(pos_gameMatrix(i,currentCol) === "-"){
-            return i;
-        }
-        else if(i===0 && pos_gameMatrix(i,currentCol)){
-            return -1;
-        }
-    }
+    if(vec_np[currentCol]==row) return -1;
+    return row-vec_np[currentCol]-1;
     
 }
 
@@ -171,13 +180,14 @@ function checkSum(currentRow, currentCol, typeToCheck, vector){
         }
     }
     
-    //console.log(lastPlayPosition + " " + vector[0]+ "," + vector[1] + ": " + sum);
+    //console.log(currentCol + " " + vector[0]+ "," + vector[1] + ": " + sum);
     return sum;
 }
 
 function play(currentRow, currentCol, type){
     //console.log(currentRow,currentCol);
     np++;
+    vec_np[currentCol]++;
     lastPlayCol = currentCol;
     lastPlayRow = currentRow;
 
@@ -186,6 +196,7 @@ function play(currentRow, currentCol, type){
 
 function rmplay(currentRow, currentCol, lastRow, lastCol){
     np--;
+    vec_np[currentCol]--;
     lastPlayCol = lastCol;
     lastPlayRow = lastRow;
     update_gameMatrix(currentRow,currentCol, "-");
@@ -198,5 +209,14 @@ function eval(){
 }
 
 function eval_board(){
-    return 0;
+    let sum = 0;
+
+    for(let currentCol = 0; currentCol<column; currentCol++){
+        const currentRow = findRow(currentCol);
+        if(findRow!=-1){
+            if(checkWin(currentRow, currentCol, "O")) sum++;
+            if(checkWin(currentRow, currentCol, "X")) sum--;
+        }
+    }
+    return sum;
 }

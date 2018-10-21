@@ -3,24 +3,36 @@ var lastPlayCol, lastPlayRow;
 var np = 0;
 
 function alfabeta(depth_max){
-    let symbol;
-    if(player)
-        symbol = "X";
-    else   
-        symbol = "O";
-       
+    let symbol0,symbol1;
+    if(player){
+        symbol0 = "X";
+        symbol1 = "O";
+    }
+    else{
+        symbol0 = "O";
+        symbol1 = "X";
+    }
     const lastCol = lastPlayCol;
     const lastRow = lastPlayRow;
 
     for(let currentCol=0;currentCol<column;currentCol++){
         currentRow = findRow(currentCol);
         if(currentRow != -1){
+            const win0 = checkWin(currentRow, currentCol, symbol0, true);
+            const win1 = checkWin(currentRow, currentCol, symbol1, true);
+/*
+            let s = "";
+            for(let i = 0;i<row;i++){
+                for(let j = 0; j<column; j++) s+=pos_gameMatrix(i,j);
+                s+="\n";
+            }
+            console.log(s);
 
-            play(currentRow,currentCol,symbol);
-            const win = checkWin(currentRow,currentCol,symbol);
-            rmplay(currentRow, currentCol, lastRow, lastCol);
-
-            if(win) return currentCol;
+            console.log(symbol0 + " " + win0 + " " + currentRow + " " + currentCol);
+            console.log(symbol1 + " " + win1 + " " + currentRow + " " + currentCol);
+*/
+            if(win0) return currentCol;
+            if(win1) return currentCol;
         }
 	}
     
@@ -44,7 +56,7 @@ function max_value(alfa, beta, depth_max){
     if(depth==0)opt=1;
 	if(depth==1)opt=2;
 
-    const win = checkWin(lastPlayRow, lastPlayCol, "X");
+    const win = checkWin(lastPlayRow, lastPlayCol, "X", false);
 
 /*
     if(lastPlayCol == 2){
@@ -112,7 +124,7 @@ function min_value(alfa, beta, depth_max){
     if(depth==0)opt=1;
 	if(depth==1)opt=2;
 
-    const win = checkWin(lastPlayRow, lastPlayCol, "O");
+    const win = checkWin(lastPlayRow, lastPlayCol, "O", false);
 
 /*
     if(lastPlayCol == 2){
@@ -126,7 +138,7 @@ function min_value(alfa, beta, depth_max){
 */ 
 
     if(win){
-        return -512;
+        return 512;
     }
     if(np == column*row){
         return 0;
