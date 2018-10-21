@@ -214,8 +214,8 @@ function eval_board(){
     for(let currentCol = 0; currentCol<column; currentCol++){
         const currentRow = findRow(currentCol);
         if(findRow!=-1){
-            if(checkWin(currentRow, currentCol, "O")) sum++;
-            if(checkWin(currentRow, currentCol, "X")) sum--;
+            if(checkWin(currentRow, currentCol, "O")) sum--;
+            if(checkWin(currentRow, currentCol, "X")) sum++;
         }
     }
     return sum;
