@@ -72,10 +72,12 @@ submitSelectors.onclick = function (){
         if(table.innerHTML != null){
             table.innerHTML = "";
         }
+        np = 0;
         row = Number(sizeRow);
         column = Number(sizeCol);
         generateBoard(); //row and column were strings, make sure to change to number
         gameMatrix = createMatrix();
+        player = true;
     }
 }
 
