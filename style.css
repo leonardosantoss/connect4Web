@@ -15,7 +15,7 @@ body {
 }
 
 .connect4div {
-    height: 500px;
+    height: 600px;
     width: 600px;
     border: 10px solid lightblue;
     align-items: center;
