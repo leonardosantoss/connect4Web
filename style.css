@@ -44,10 +44,6 @@ div[class*='circle'] {
     border-radius: 4px;
 }
 
-.square:hover {
-    background-color: royalblue;
-}
-
 
 .modal {
     display: none; 

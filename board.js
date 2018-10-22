@@ -202,9 +202,73 @@ function rmplay(currentRow, currentCol, lastRow, lastCol){
     update_gameMatrix(currentRow,currentCol, "-");
 }
 
-function eval(){
+function eval_pos_aux(currentRow, currentCol, vector){
     let sum = 0;
+    let sum1 = 0;
+    let sum2 = 0;
+    let cond0, cond1;
+    let type1 = "";
+    let type2 = "";
 
+    for(let i=1;i<4;i++){
+        cond0 = currentRow+i*vector[0] > row-1    || currentRow+i*vector[0] < 0;
+        cond1 = currentCol+i*vector[1] > column-1 || currentCol+i*vector[1] < 0;
+        if(cond0 || cond1){
+            break;
+        }
+        else if(type1 == "" && pos_gameMatrix(currentRow+i*vector[0] , currentCol+i*vector[1]) !== "-"){
+            type1 = pos_gameMatrix(currentRow+i*vector[0] , currentCol+i*vector[1]);
+            sum1++;
+        }
+        else if(type1 != "" && pos_gameMatrix(currentRow+i*vector[0] , currentCol+i*vector[1]) !== type1){
+            break;
+        } 
+        else if(type1 != ""){
+            sum1++;
+        }
+    }
+    
+    for(let i=1;i<4;i++){
+        cond0 = currentRow-i*vector[0] > row-1    || currentRow-i*vector[0] < 0;
+        cond1 = currentCol-i*vector[1] > column-1 || currentCol-i*vector[1] < 0;
+        if(cond0 || cond1){
+            break;
+        }
+        else if(type2 == "" && pos_gameMatrix(currentRow-i*vector[0] , currentCol-i*vector[1]) !== "-"){
+            type2 = pos_gameMatrix(currentRow-i*vector[0] , currentCol-i*vector[1]);
+            sum2++;
+        }
+        else if(type2 != "" && pos_gameMatrix(currentRow-i*vector[0],currentCol-i*vector[1]) !== type2){
+            break;
+        } 
+        else if(type2 != ""){
+            sum2++;
+        }
+    }
+
+    if(type1 == "O") 
+        sum -= Math.pow(4, sum1);
+    else if(type1 == "X") 
+        sum += Math.pow(4, sum1);
+
+    if(type2 == "O") 
+        sum -= Math.pow(4, sum2);
+    else if(type2 == "X") 
+        sum += Math.pow(4, sum2);
+
+    return sum;
+}
+
+function eval_pos(currentRow, currentCol){
+    let sum = 0;
+    let x;
+    
+    for(let i = 0;i<4;i++){
+        x = eval_pos_aux(currentRow, currentCol, unit_vector[i]);
+        if(x > sum)
+            sum = x;
+    }
+    
     return sum;
 }
 
@@ -214,8 +278,7 @@ function eval_board(){
     for(let currentCol = 0; currentCol<column; currentCol++){
         const currentRow = findRow(currentCol);
         if(findRow!=-1){
-            if(checkWin(currentRow, currentCol, "O")) sum--;
-            if(checkWin(currentRow, currentCol, "X")) sum++;
+            sum+=eval_pos(currentRow, currentCol);
         }
     }
     return sum;
