@@ -1,29 +1,29 @@
 var player = true; // choose player that starts
 var win = false;
-var unit_vector = [[1,0], [0,1], [-1,-1], [-1,1]]; // horizontal, vertical, negative diagonal, positive diagonal
+const unit_vector = [[1,0], [0,1], [-1,-1], [-1,1]]; // horizontal, vertical, negative diagonal, positive diagonal
 
 
 function generateBoard(row, column){
     // Generate the board, using a table
-    var table = document.createElement("table");
+    const table = document.createElement("table");
     table.className= "boardTable";
     table.id="gameBoard";
-    for (var i=0; i<row;i++){
-        var tr = document.createElement('tr');
+    for (let i=0; i<row;i++){
+        const tr = document.createElement('tr');
         tr.className = "boardTr";
         for(var j=0; j<column ;j++){
-            var td = document.createElement('td');
-            var div = document.createElement('div');
+            const td = document.createElement('td');
+            const div = document.createElement('div');
             position = i*(column) + j;
             td.className = "square";
             td.id = position;
             div.className = "circle";
             div.id = "cir_" + position;
             td.onclick = function (){ 
-                var emptyPosition = findPosition(this.id);
+                const emptyPosition = findPosition(this.id);
 
                 if(emptyPosition !== -1){
-                    var circle = document.getElementById("cir_"+ emptyPosition);
+                    const circle = document.getElementById("cir_"+ emptyPosition);
                     if(player){
                         circle.style.background = playerColor;
                         win = checkWin(emptyPosition, "X");
@@ -50,7 +50,7 @@ function generateBoard(row, column){
         table.appendChild(tr);
     }
 
-    var outsideDiv = document.getElementById('connect4div');
+    const outsideDiv = document.getElementById('connect4div');
     outsideDiv.appendChild(table);
 
 }
@@ -58,10 +58,10 @@ function generateBoard(row, column){
 
 // returns a matrix with all positions with a "-" (means its empty)
 function createMatrix(row, column){
-  var matrix = [];
-  for(var i=0;i<row;i++){
+  let matrix = [];
+  for(let i=0;i<row;i++){
       matrix[i] = [];
-      for(var j=0; j<column;j++){
+      for(let j=0; j<column;j++){
           
           matrix[i][j] = "-";
       }
@@ -85,8 +85,8 @@ function update_gameMatrix(i, j, x){
 
 function findPosition(clickedCircle){
 
-    currentCol = clickedCircle % column; //determine which column was clicked
-    for(var i = row-1; i>=0; i--){
+    let currentCol = clickedCircle % column; //determine which column was clicked
+    for(let i = row-1; i>=0; i--){
         if(pos_gameMatrix(i,currentCol) === "-"){
             if(player){
                 update_gameMatrix(i,currentCol,"X");
@@ -106,10 +106,10 @@ function findPosition(clickedCircle){
 
 
 function checkWin(lastPlayPosition, typeToCheck){
-    var sum = 0;
-    var x;
+    let sum = 0;
+    let x;
     
-    for(var i = 0;i<4;i++){
+    for(let i = 0;i<4;i++){
         x = checkSum(lastPlayPosition, typeToCheck, unit_vector[i]);
         if(x > sum)
             sum = x;
@@ -124,12 +124,12 @@ function checkWin(lastPlayPosition, typeToCheck){
 }
 
 function checkSum(lastPlayPosition, typeToCheck, vector){
-    var currentCol = lastPlayPosition % column;
-    var currentRow  = Math.floor(lastPlayPosition/column);
-    var sum = 0;
-    var cond0, cond1;
+    const currentCol = lastPlayPosition % column;
+    const currentRow  = Math.floor(lastPlayPosition/column);
+    let sum = 0;
+    let cond0, cond1;
     
-    for(i=1;i<4;i++){
+    for(let i=1;i<4;i++){
         cond0 = currentRow+i*vector[0] > row-1    || currentRow+i*vector[0] < 0;
         cond1 = currentCol+i*vector[1] > column-1 || currentCol+i*vector[1] < 0;
         if(cond0 || cond1){
@@ -143,7 +143,7 @@ function checkSum(lastPlayPosition, typeToCheck, vector){
         }
     }
     
-    for(i=1;i<4;i++){
+    for(let i=1;i<4;i++){
         cond0 = currentRow-i*vector[0] > row-1    || currentRow-i*vector[0] < 0;
         cond1 = currentCol-i*vector[1] > column-1 || currentCol-i*vector[1] < 0;
         if(cond0 || cond1){
