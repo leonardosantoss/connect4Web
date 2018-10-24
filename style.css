@@ -14,6 +14,18 @@ body {
     
 }
 
+.logDiv {
+    height: 300px;
+    width: 380px;
+    border: 10px solid lightblue; 
+    align-items: right;
+    float: right;
+    border-radius: 5px;
+    margin-right: 20px;
+    overflow: auto;
+    scroll-behavior: auto;
+}
+
 .connect4div {
     height: 600px;
     width: 600px;
@@ -42,6 +54,17 @@ div[class*='circle'] {
     background-color: gray;
     overflow: hidden;
     border-radius: 4px;
+}
+
+.botP{
+    color:red;
+    margin-left: 15px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.playerP{
+    margin-left: 15px;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 

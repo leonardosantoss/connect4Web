@@ -2,6 +2,7 @@ var depth, bestplayCol;
 var lastPlayCol, lastPlayRow;
 var np = 0;
 
+
 function alfabeta(depth_max){
     let symbol0,symbol1;
     if(player){
