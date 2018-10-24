@@ -31,8 +31,8 @@ function alfabeta(depth_max){
             console.log(symbol0 + " " + win0 + " " + currentRow + " " + currentCol);
             console.log(symbol1 + " " + win1 + " " + currentRow + " " + currentCol);
 */
-            if(win0) return currentCol;
             if(win1) return currentCol;
+            if(win0) return currentCol;
         }
 	}
     
