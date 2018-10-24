@@ -5,6 +5,14 @@ var vec_np;
 
 const logDiv = document.getElementById('logDiv');
 
+function logmsg(currentCol, color, str){
+    const p = document.createElement('p');
+    p.className = "logmsg";
+    p.innerHTML = str + " played on the column " + currentCol;
+    p.style.color = color;
+    logDiv.appendChild(p);
+}
+
 function update_board_pos(currentRow, currentCol){
     const emptyPosition = (currentRow*column)+currentCol;
     const circle = document.getElementById("cir_"+ emptyPosition);
@@ -13,11 +21,13 @@ function update_board_pos(currentRow, currentCol){
         play(currentRow,currentCol, "X");
         circle.style.background = playerColor;
         win = checkWin(currentRow, currentCol, "X");
+        logmsg(currentCol, playerColor, "You");
     }
     else{
         play(currentRow,currentCol, "O");
-        circle.style.background = "blue";
+        circle.style.background = opponentColor;
         win = checkWin(currentRow, currentCol, "O");
+        logmsg(currentCol, opponentColor, "Bot");
     }
     
     if(win){
@@ -50,6 +60,7 @@ function generateBoard(){
             td.id = position;
             div.className = "circle";
             div.id = "cir_" + position;
+
             td.onmouseover = function (){
                 const currentCol = this.id % column;
                 for(let i=0;i<row;i++){
@@ -70,22 +81,19 @@ function generateBoard(){
                 
                 if(currentRow !== -1){
                     console.log("player: " + currentRow + " " + currentCol);
-                    const p = document.createElement('p');
-                    p.className = "playerP";
-                    p.innerHTML = "You played on the column " + currentCol;
-                    logDiv.appendChild(p);
+
                     let win = update_board_pos(currentRow, currentCol);                    
                     player = !player;
 
-                    currentCol = alfabeta(9);
+                    //document.getElementById("thinking").style.display = "block";
+                    currentCol = alfabeta(difficulty);
+                    //document.getElementById("thinking").style.display = "none";
+
                     currentRow = findRow(currentCol);
 
                     if(currentRow != -1 && !win){
                         console.log("bot: " + currentRow + " " + currentCol);
-                        const p = document.createElement('p');
-                        p.className = "botP";
-                        p.innerHTML = "Bot played on the column " + currentCol;
-                        logDiv.appendChild(p);
+
                         update_board_pos(currentRow, currentCol);                    
                         player = !player;
                     }

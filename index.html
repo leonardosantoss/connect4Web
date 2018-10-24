@@ -59,12 +59,13 @@
             </div>
         </div>
 
+
         <div class="buttonsDiv">
 
             <table class="tableSelector">
                 <tr>
                     <td><p class="pChoose">Play against: </p></td>
-                    <td><select size = 1 style="max-width:90%;" id="against">
+                    <td><select class="selec" size = 1  id="against">
                             <option>Bot</option>
                             <option>Player</option>
                         </select></td>
@@ -81,22 +82,33 @@
                 <tr>
                     <td><p class="pChoose">IA Level:</p></td>
                     <td>
-                        <input type="number" min="1" max="8" value="1" id="ia">
+                        <select class="selec" size = 1  id="ia">
+                            <option>easy</option>
+                            <option>medium</option>
+                            <option>hard</option>
+                            <option>hardcore (may be slow)</option>
+                        </select></td>
                     </td>
                 </tr>
                 <tr>
                         <td><p class="pChoose">First to play:</p></td>
                         <td>
-                                <select size = 1 class="selectWhoStarts" id="whoStarts">
-                                        <option>Me</option>
-                                        <option>Opponent</option>
-                                </select>
+                            <select class="selec" size = 1 class="selectWhoStarts" id="whoStarts">
+                                    <option>Me</option>
+                                    <option>Opponent</option>
+                            </select>
                         </td>
                 </tr>
                 <tr>
-                    <td><p class="pChoose">Color:</p></td>
+                    <td><p class="pChoose">Color (Me):</p></td>
                     <td>
-                        <input type="color" name="favcolor" value="#ff0000" id="color">
+                        <input type="color" name="favcolor" value="#ff0000" id="colorme">
+                    </td>    
+                </tr>
+                <tr>
+                    <td><p class="pChoose">Color (Opponent):</p></td>
+                    <td>
+                        <input type="color" name="favcolor" value="#00ff00" id="colorop">
                     </td>    
                 </tr>
 
@@ -107,13 +119,10 @@
         </div> 
 
         <!-- board -->
-        <div class="logDiv" id="logDiv">
-        </div>
         <div class="connect4div" id="connect4div"></div>
-       
-
+        <div class="logDiv" id="logDiv"></div>       
     </div>
-
+    <div class="thinking" id="thinking">Thinking...</div>
 
     
     

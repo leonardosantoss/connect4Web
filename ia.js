@@ -16,26 +16,21 @@ function alfabeta(depth_max){
     const lastCol = lastPlayCol;
     const lastRow = lastPlayRow;
 
+    let colwin0 = -1, colwin1 = -1;
+    let win0 = false, win1 = false;
     for(let currentCol=0;currentCol<column;currentCol++){
         currentRow = findRow(currentCol);
         if(currentRow != -1){
-            const win0 = checkWin(currentRow, currentCol, symbol0, true);
-            const win1 = checkWin(currentRow, currentCol, symbol1, true);
-/*
-            let s = "";
-            for(let i = 0;i<row;i++){
-                for(let j = 0; j<column; j++) s+=pos_gameMatrix(i,j);
-                s+="\n";
-            }
-            console.log(s);
+            win0 = checkWin(currentRow, currentCol, symbol0);
+            win1 = checkWin(currentRow, currentCol, symbol1);
 
-            console.log(symbol0 + " " + win0 + " " + currentRow + " " + currentCol);
-            console.log(symbol1 + " " + win1 + " " + currentRow + " " + currentCol);
-*/
-            if(win1) return currentCol;
-            if(win0) return currentCol;
+            if(win0) colwin0 = currentCol;
+            if(win1) colwin1 = currentCol;
         }
-	}
+    }
+    
+    if(colwin0 != -1) return colwin0;
+    if(colwin1 != -1) return colwin1;
     
     let alfa = -100000;
     let beta =  100000;  
@@ -57,18 +52,7 @@ function max_value(alfa, beta, depth_max){
     if(depth==0)opt=1;
 	if(depth==1)opt=2;
 
-    const win = checkWin(lastPlayRow, lastPlayCol, "X", false);
-
-/*
-    if(lastPlayCol == 2){
-        console.log("max "+win+" "+lastPlayRow+" "+lastPlayCol);
-        for(let i = 0;i<row;i++){
-            let s = "";
-            for(let j = 0; j<column; j++) s+=pos_gameMatrix(i,j);
-            console.log(s+"\n");
-        }
-    }
-*/
+    const win = checkWin(lastPlayRow, lastPlayCol, "X");
 
     if(win){
         return -512;
@@ -125,18 +109,9 @@ function min_value(alfa, beta, depth_max){
     if(depth==0)opt=1;
 	if(depth==1)opt=2;
 
-    const win = checkWin(lastPlayRow, lastPlayCol, "O", false);
+    const win = checkWin(lastPlayRow, lastPlayCol, "O");
 
-/*
-    if(lastPlayCol == 2){
-        console.log("min "+win+" "+lastPlayRow+" "+lastPlayCol);
-        for(let i = 0;i<row;i++){
-            let s = "";
-            for(let j = 0; j<column; j++) s+=pos_gameMatrix(i,j);
-            console.log(s+"\n");
-        }
-    }
-*/ 
+ 
 
     if(win){
         return 512;

@@ -1,4 +1,4 @@
-var gameMatrix, row, column, playerColor;
+var gameMatrix, row, column, playerColor, opponentColor, difficulty;
 
 // button for the instructions option
 
@@ -58,35 +58,66 @@ submitSelectors.onclick = function (){
     const whoStarts = document.getElementById('whoStarts');
     const optionWhoStarts = whoStarts.options[whoStarts.selectedIndex].text;
 
-    playerColor = document.getElementById('color').value;
+    playerColor = document.getElementById('colorme').value;
+    opponentColor = document.getElementById('colorop').value;
 
-    if(ia == ""){
-        console.log("IA not selected!");
-    } 
-    else if(sizeCol == "" || sizeRow == ""){
-        console.log("Sizes not properly selected!")
+    const table = document.getElementById('connect4div');    
+    if(table.innerHTML != null){
+        table.innerHTML = "";
     }
-    else {
-        //success, board can be safely generated
-        const table = document.getElementById('connect4div');    
-        if(table.innerHTML != null){
-            table.innerHTML = "";
-        }
 
-        const logDiv = document.getElementById('logDiv');
-        if(logDiv.innerHTML != null){
-            logDiv.innerHTML = "";
-        }
-        np = 0;
-        row = Number(sizeRow);
-        column = Number(sizeCol);
+    const logDiv = document.getElementById('logDiv');
+    if(logDiv.innerHTML != null){
+        logDiv.innerHTML = "";
+    }
+    np = 0;
+    row = Number(sizeRow);
+    column = Number(sizeCol);
 
-        vec_np = [];
-        for(let i = 0; i<column; i++) vec_np.push(0);
-        
-        generateBoard(); //row and column were strings, make sure to change to number
-        gameMatrix = createMatrix();
-        player = true;
+    vec_np = [];
+    for(let i = 0; i<column; i++) vec_np.push(0);
+    
+    generateBoard(); //row and column were strings, make sure to change to number
+    gameMatrix = createMatrix();
+    player = true;
+    
+    const size = column;
+    const dif = document.getElementById("ia").value;
+    sizetodepth(size, dif);
+
+    document.getElementById("thinking").style.display = "none";
+}
+
+//(4) 2 5 10 14
+//(5) 2 5 10 12
+//(6) 2 5 09 10
+//(7) 2 5 08 09
+//(8) 2 5 07 09
+function sizetodepth(size, dif){
+    if(dif == "easy"){
+        if(size == 4)      difficulty = 2;
+        else if(size == 5) difficulty = 2;
+        else if(size == 6) difficulty = 2;
+        else if(size == 7) difficulty = 2;
+        else               difficulty = 2;
+    }else if(dif == "medium"){
+        if(size == 4)      difficulty = 5;
+        else if(size == 5) difficulty = 5;
+        else if(size == 6) difficulty = 5;
+        else if(size == 7) difficulty = 5;
+        else                difficulty = 5;
+    }else if(dif == "hard"){
+        if(size == 4)      difficulty = 10;
+        else if(size == 5) difficulty = 10;
+        else if(size == 6) difficulty = 9;
+        else if(size == 7) difficulty = 8;
+        else                difficulty = 7;
+    }else if(dif == "hardcore (may be slow)"){
+        if(size == 4)      difficulty = 14;
+        else if(size == 5) difficulty = 12;
+        else if(size == 6) difficulty = 10;
+        else if(size == 7) difficulty = 9;
+        else               difficulty = 9;
     }
 }
 

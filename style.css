@@ -5,16 +5,27 @@ body {
 
 .buttonsDiv {
     height: 300px;
-    width: 300px;
     border: 10px solid lightblue; 
     align-items: left;
     float: left;
     margin-right: 15px;
     border-radius: 5px;
-    
+    padding: 10px
+}
+
+.connect4div {
+    height: 600px;
+    width: 600px;
+    border: 10px solid lightblue;
+    align-items: center;
+    display: flex;
+    float: left;
+    justify-content: center;
+    border-radius: 5px;
 }
 
 .logDiv {
+    margin-left: 15px;
     height: 300px;
     width: 380px;
     border: 10px solid lightblue; 
@@ -24,17 +35,10 @@ body {
     margin-right: 20px;
     overflow: auto;
     scroll-behavior: auto;
+    float: left;
 }
 
-.connect4div {
-    height: 600px;
-    width: 600px;
-    border: 10px solid lightblue;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    border-radius: 5px;
-}
+
 
 .square {
     width: 60px;
@@ -56,13 +60,7 @@ div[class*='circle'] {
     border-radius: 4px;
 }
 
-.botP{
-    color:red;
-    margin-left: 15px;
-    font-family: 'Times New Roman', Times, serif;
-}
-
-.playerP{
+.logmsg{
     margin-left: 15px;
     font-family: 'Times New Roman', Times, serif;
 }
@@ -177,4 +175,14 @@ div[class*='circle'] {
     margin-bottom: 80px;
     margin-right:50px;
    
+}
+
+.selec {
+    width: 90px;
+}
+
+.thinking{
+    position: absolute;
+    bottom: 0;
+    display: none;
 }
