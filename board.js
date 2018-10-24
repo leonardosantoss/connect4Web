@@ -3,9 +3,12 @@ const unit_vector = [[1,0], [0,1], [-1,-1], [-1,1]]; // horizontal, vertical, ne
 var bestplayCol;
 var vec_np;
 
+const logDiv = document.getElementById('logDiv');
+
 function update_board_pos(currentRow, currentCol){
     const emptyPosition = (currentRow*column)+currentCol;
     const circle = document.getElementById("cir_"+ emptyPosition);
+    
     if(player){
         play(currentRow,currentCol, "X");
         circle.style.background = playerColor;
@@ -67,6 +70,10 @@ function generateBoard(){
                 
                 if(currentRow !== -1){
                     console.log("player: " + currentRow + " " + currentCol);
+                    const p = document.createElement('p');
+                    p.className = "playerP";
+                    p.innerHTML = "You played on the column " + currentCol;
+                    logDiv.appendChild(p);
                     let win = update_board_pos(currentRow, currentCol);                    
                     player = !player;
 
@@ -75,6 +82,10 @@ function generateBoard(){
 
                     if(currentRow != -1 && !win){
                         console.log("bot: " + currentRow + " " + currentCol);
+                        const p = document.createElement('p');
+                        p.className = "botP";
+                        p.innerHTML = "Bot played on the column " + currentCol;
+                        logDiv.appendChild(p);
                         update_board_pos(currentRow, currentCol);                    
                         player = !player;
                     }

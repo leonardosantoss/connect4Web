@@ -72,6 +72,11 @@ submitSelectors.onclick = function (){
         if(table.innerHTML != null){
             table.innerHTML = "";
         }
+
+        const logDiv = document.getElementById('logDiv');
+        if(logDiv.innerHTML != null){
+            logDiv.innerHTML = "";
+        }
         np = 0;
         row = Number(sizeRow);
         column = Number(sizeCol);
