@@ -17,7 +17,6 @@ header {
 }
 
 header h1 {
-    
     vertical-align: top;
     color: midnightblue;
     margin-block-start: 0;
@@ -35,11 +34,13 @@ header h1 {
     line-height: 32px;
     background-color: #818181;
     display: inline-block;
-    width: 94%;
+    width: 79%;
 }
 
 ul.main_menu {
     margin-top: 15px;
+    margin-inline-end: 2px;
+    margin-inline-start: 1px;
 }
 
 .main_menu li {
@@ -51,7 +52,7 @@ ul.main_menu {
 .main_menu a {
     text-decoration: none;
     color: #fff;
-    padding: 8px;
+    padding: 0px;
     font-variant: small-caps;
 }
 
@@ -59,9 +60,19 @@ ul.main_menu {
     color: #59d5d8;
 }
 
-.logout{
-    width: 5%;
+.about{
+    width: 10%;
     display: inline-block;
+}
+
+.about a:hover {
+    color: green;
+}
+
+.logout{
+    width: 10%;
+    display: inline-block;
+    background-color: lightcoral;
 }
 
 .logout a:hover {

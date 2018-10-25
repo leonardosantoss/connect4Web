@@ -4,31 +4,35 @@ body {
 }
 
 .buttonsDiv {
-    height: 320px;
-    width: 300px;
+    height: 600px;
+    width: 15%;
     border: 10px solid lightblue;
     border-radius: 5px;
 
     margin: 15px;
+    margin-left: 30px;
 
-    display: inline-block;
+    float: left;
 }
 
 .connect4div {
+    width: 60%;
+    height: 600px;
     border: 10px solid lightblue;
     border-radius: 5px;
     margin: 15px;
-    display: inline-block;
+    display: flex;
+    float: left;
 }
 
 .logDiv {
     background-color: lightgrey;
     margin: 15px;
-    height: 320px;
-    width: 300px;
+    height: 600px;
+    width: 15%;
 
     text-align: center;
-    display: inline-block;
+    float: left;
     border: 10px solid lightblue; 
     border-radius: 5px;
 

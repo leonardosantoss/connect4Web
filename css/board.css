@@ -15,4 +15,5 @@ div[class*='circle'] {
 .boardTable {
     background-color: gray;
     overflow: hidden;
+    margin: auto;
 }
