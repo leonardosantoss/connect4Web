@@ -8,7 +8,7 @@ const logDiv = document.getElementById('logDiv');
 function logmsg(currentCol, color, str){
     const p = document.createElement('p');
     p.className = "logmsg";
-    p.innerHTML = str + " played on the column " + currentCol;
+    p.innerHTML = "Move " + np +": " + str + " played on the column " + currentCol;
     p.style.color = color;
     logDiv.appendChild(p);
 }

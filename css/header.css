@@ -30,9 +30,12 @@ header h1 {
 
 .main_menu {
     padding: 5px 0 5px 0;
+    border-right: 0;
     text-align: center;
     line-height: 32px;
     background-color: #818181;
+    display: inline-block;
+    width: 94%;
 }
 
 ul.main_menu {
@@ -54,4 +57,13 @@ ul.main_menu {
 
 .main_menu a:hover {
     color: #59d5d8;
+}
+
+.logout{
+    width: 5%;
+    display: inline-block;
+}
+
+.logout a:hover {
+    color: red;
 }

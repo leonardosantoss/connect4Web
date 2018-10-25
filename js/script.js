@@ -16,6 +16,8 @@ const scoreSpan = document.getElementById('scoreSpan'); // element that closes t
 
 const submitSelectors = document.getElementById('submitSelectors');
 
+submitconfig();
+
 // open the modal after user clicks on the button
 instructionsButton.onclick = function () {
     instructionsModal.style.display = "block";
@@ -44,16 +46,13 @@ scoreSpan.onclick = function () {
     scoreModal.style.display = "none";
 }
 
-// After clicking the submit button, handles all the selections made by the user
-submitSelectors.onclick = function (){
+function submitconfig(){
     const against = document.getElementById('against');
     const optionAgainst = against.options[against.selectedIndex].text;
 
     const sizeCol = document.getElementById('sizeCol').value;
 
     const sizeRow = document.getElementById('sizeRow').value;
-
-    const ia = document.getElementById('ia').value;
 
     const whoStarts = document.getElementById('whoStarts');
     const optionWhoStarts = whoStarts.options[whoStarts.selectedIndex].text;
@@ -86,6 +85,10 @@ submitSelectors.onclick = function (){
     sizetodepth(size, dif);
 
     document.getElementById("thinking").style.display = "none";
+}
+// After clicking the submit button, handles all the selections made by the user
+submitSelectors.onclick = function (){
+    submitconfig();
 }
 
 //(4) 2 5 10 14
