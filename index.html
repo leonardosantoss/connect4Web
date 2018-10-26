@@ -17,12 +17,12 @@
 
     <body>
             
-    <div class="wrapper">
+    
         <header>
             <h1>Connect 4 </h1>
         </header>
 
-        <nav>
+        <nav id="nav">
             <ul class="main_menu logout"><li><a id="logout" href="#">Logout</a></li></ul>
             <ul class="main_menu">
                 <li><a id="instructionsButton" href="#">Instructions</a></li>
@@ -32,7 +32,6 @@
             <ul class="main_menu about"><li><a id="about" href="#">About Game</a></li></ul>
         </nav>
         
-    </div>
 
     <div id="instructionsModal" class="modal">
         <div class ="modal-content">
@@ -65,6 +64,18 @@
             <div id="scorediv"></div>
         </div>
     </div>
+
+    <div id="loginDivId" class="loginDiv">
+        <h2 class="h2login">Log In</h2>
+        <ul>
+            <li class = "login-li"><span class="login-text">Username:</span> <input type=text id="usernameLogin"></li> <br>
+            <li class = "login-li"><span class="login-text">Password:</span> <input type="password" id="passwordLogin"></li>
+            <br>
+        </ul>
+        <input id="submitLoginId" class="submitLogin" type="submit">
+    </div>
+
+    <div id="allButHeaderDivId" class="allButHeaderDiv">
 
     <div class="buttonsDiv">
 
@@ -130,6 +141,9 @@
     
 
     <div class="thinking" id="thinking">Thinking...</div>
+
+</div>
+
 
     
     
