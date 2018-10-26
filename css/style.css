@@ -9,25 +9,26 @@ body {
     border: 10px solid lightblue;
     border-radius: 5px;
 
-    margin: 15px;
-    margin-left: 30px;
+    margin: 1%;
+    margin-left: 5%;
 
     float: left;
 }
 
 .connect4div {
-    width: 55%;
+    width: 50%;
     height: 600px;
     border: 10px solid lightblue;
     border-radius: 5px;
-    margin: 15px;
+    margin: 1%;
     display: flex;
     float: left;
+    overflow: scroll;
 }
 
 .logDiv {
     background-color: lightgrey;
-    margin: 15px;
+    margin: 1%;
     height: 600px;
     width: 15%;
 
@@ -41,7 +42,7 @@ body {
 }
 
 .pChoose {
-    font-size: 12px;
+    font-size: 14px;
     font-family: 'Times New Roman', Times, serif;
 }
 
@@ -70,8 +71,16 @@ body {
    
 }
 
-.selecoption {
-    width: 90px;
+.selectoption {
+    width: 90%;
+}
+
+.coloroption {
+    width: 37%;
+}
+
+.numberoption {
+    width: 80%;
 }
 
 .thinking{

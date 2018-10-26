@@ -7,7 +7,11 @@
         <link type="text/css" rel="stylesheet" href="css/header.css" /> 
         <link type="text/css" rel="stylesheet" href="css/board.css" />
         <link type="text/css" rel="stylesheet" href="css/modals.css" />
-  
+        
+        <script src="js/utilities.js"></script>
+        <script src="js/ia.js"></script>
+        <script src="js/board.js"></script>
+        <script src="js/script.js"></script>
     </head>
     
 
@@ -67,35 +71,37 @@
         <table class="tableSelector">
             <tr>
                 <td><p class="pChoose">Play against: </p></td>
-                <td><select class="selecoption" size = 1  id="against">
+                <td colspan="2">
+                    <select class="selectoption" size = 1  id="against" >
                         <option>Bot</option>
                         <option>Player</option>
-                    </select></td>
+                    </select>
+                </td>
             </tr>
             <tr>
                 <td><p class="pChoose">Size:</p></td>
                 <td>
-                    <input type="number" min="4" max="8" value="5" id="sizeRow">
+                    <input class = "numberoption" type="number" min="4" max="8" value="5" id="sizeRow">
                 </td>
                 <td>
-                    <input type="number" min="4" max="8" value="5" id="sizeCol">
+                    <input class = "numberoption" type="number" min="4" max="8" value="5" id="sizeCol">
                 </td>
             </tr>
             <tr>
                 <td><p class="pChoose">IA Level:</p></td>
-                <td>
-                    <select class="selecoption" size = 1  id="ia">
-                        <option>easy</option>
-                        <option>medium</option>
-                        <option>hard</option>
-                        <option>hardcore (may be slow)</option>
+                <td colspan="2">
+                    <select class="selectoption" size = 1  id="ia">
+                        <option>Easy</option>
+                        <option>Medium</option>
+                        <option>Hard</option>
+                        <option>Hardcore (may be slow)</option>
                     </select></td>
                 </td>
             </tr>
             <tr>
                     <td><p class="pChoose">First to play:</p></td>
-                    <td>
-                        <select class="selec" size = 1 class="selectWhoStarts" id="whoStarts">
+                    <td colspan="2">
+                        <select class="selectoption" size = 1 class="selectWhoStarts" id="whoStarts">
                                 <option>Me</option>
                                 <option>Opponent</option>
                         </select>
@@ -103,14 +109,14 @@
             </tr>
             <tr>
                 <td><p class="pChoose">Color (Me):</p></td>
-                <td>
-                    <input type="color" name="favcolor" value="#ff0000" id="colorme">
+                <td colspan="2">
+                    <input class = "coloroption" type="color" name="favcolor" value="#ff0000" id="colorme">
                 </td>    
             </tr>
             <tr>
                 <td><p class="pChoose">Color (Opponent):</p></td>
-                <td>
-                    <input type="color" name="favcolor" value="#008080" id="colorop">
+                <td colspan="2">
+                    <input class = "coloroption" type="color" name="favcolor" value="#008080" id="colorop">
                 </td>    
             </tr>
         </table>
@@ -128,11 +134,6 @@
     
     
     </body>
-
-    <script src="js/utilities.js"></script>
-    <script src="js/ia.js"></script>
-    <script src="js/board.js"></script>
-    <script src="js/script.js"></script>
     
     <div id = "login" style="display: block;"></div>
     <div id = "jogo" style="display: none;"></div>

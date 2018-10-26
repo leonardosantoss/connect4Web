@@ -4,7 +4,7 @@ body {
 }
 
 #wrapper {
-    max-width: 960px;
+    max-width: 90%;
     margin: 0 auto;
     background-color: #fff;
     padding: 32px;
@@ -14,6 +14,7 @@ header {
     background-color: lightblue;
     height: 50px;
     padding: 4px;
+    width: 99%;
 }
 
 header h1 {
@@ -34,13 +35,13 @@ header h1 {
     line-height: 32px;
     background-color: #818181;
     display: inline-block;
-    width: 78%;
+    width: 58.6%;
 }
 
 ul.main_menu {
     margin-top: 15px;
-    margin-inline-end: 2px;
-    margin-inline-start: 1px;
+    margin-inline-end: 0.0005%;
+    margin-inline-start: 0.0005%;
 }
 
 .main_menu li {
@@ -61,7 +62,7 @@ ul.main_menu {
 }
 
 .about{
-    width: 10%;
+    width: 20%;
     display: inline-block;
 }
 
@@ -70,7 +71,7 @@ ul.main_menu {
 }
 
 .logout{
-    width: 10%;
+    width: 20%;
     display: inline-block;
     background-color: lightcoral;
 }

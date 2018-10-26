@@ -3,9 +3,9 @@ const unit_vector = [[1,0], [0,1], [-1,-1], [-1,1]]; // horizontal, vertical, ne
 var bestplayCol;
 var vec_np;
 
-const logDiv = document.getElementById('logDiv');
 
 function logmsg(currentCol, color, str){
+    const logDiv = document.getElementById('logDiv');
     const p = document.createElement('p');
     p.className = "logmsg";
     p.innerHTML = "Move " + np +": " + str + " played on the column " + currentCol;

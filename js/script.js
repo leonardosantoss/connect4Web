@@ -1,49 +1,55 @@
 var gameMatrix, row, column, playerColor, opponentColor, difficulty;
 
 // button for the instructions option
+window.onload = function (){
+    const instructionsModal = document.getElementById('instructionsModal'); //modal
+    const profileModal = document.getElementById('profileModal'); //modal
+    const scoreModal = document.getElementById('scoreModal'); //modal
 
-const instructionsModal = document.getElementById('instructionsModal'); //modal
-const profileModal = document.getElementById('profileModal'); //modal
-const scoreModal = document.getElementById('scoreModal'); //modal
+    const instructionsButton = document.getElementById('instructionsButton'); //button
+    const profileButton = document.getElementById('profileButton'); // profile
+    const scoreButton = document.getElementById('scoreButton'); //score
 
-const instructionsButton = document.getElementById('instructionsButton'); //button
-const profileButton = document.getElementById('profileButton'); // profile
-const scoreButton = document.getElementById('scoreButton'); //score
+    const instructionsSpan = document.getElementById('instructionsSpan'); // element that closes the modal
+    const profileSpan = document.getElementById('profileSpan'); // element that closes the modal
+    const scoreSpan = document.getElementById('scoreSpan'); // element that closes the modal
 
-const instructionsSpan = document.getElementById('instructionsSpan'); // element that closes the modal
-const profileSpan = document.getElementById('profileSpan'); // element that closes the modal
-const scoreSpan = document.getElementById('scoreSpan'); // element that closes the modal
+    const submitSelectors = document.getElementById('submitSelectors');
 
-const submitSelectors = document.getElementById('submitSelectors');
+    // open the modal after user clicks on the button
+    instructionsButton.onclick = function () {
+        instructionsModal.style.display = "block";
+    }
 
-submitconfig();
+    profileButton.onclick = function () {
+        profileModal.style.display = "block";
+    }
 
-// open the modal after user clicks on the button
-instructionsButton.onclick = function () {
-    instructionsModal.style.display = "block";
-}
+    scoreButton.onclick = function () {
+        scoreModal.style.display = "block";
+    }
 
-profileButton.onclick = function () {
-    profileModal.style.display = "block";
-}
+    // closes the modal after clicking the x 
+    instructionsSpan.onclick = function () {
+        instructionsModal.style.display = "none";
+    }
 
-scoreButton.onclick = function () {
-    scoreModal.style.display = "block";
-}
+    // closes the modal after clicking the x 
+    profileSpan.onclick = function () {
+        profileModal.style.display = "none";
+    }
 
-// closes the modal after clicking the x 
-instructionsSpan.onclick = function () {
-    instructionsModal.style.display = "none";
-}
+    // closes the modal after clicking the x 
+    scoreSpan.onclick = function () {
+        scoreModal.style.display = "none";
+    }
 
-// closes the modal after clicking the x 
-profileSpan.onclick = function () {
-    profileModal.style.display = "none";
-}
+    // After clicking the submit button, handles all the selections made by the user
+    submitSelectors.onclick = function (){
+        submitconfig();
+    }
 
-// closes the modal after clicking the x 
-scoreSpan.onclick = function () {
-    scoreModal.style.display = "none";
+    submitconfig();
 }
 
 function submitconfig(){
@@ -86,10 +92,6 @@ function submitconfig(){
 
     document.getElementById("thinking").style.display = "none";
 }
-// After clicking the submit button, handles all the selections made by the user
-submitSelectors.onclick = function (){
-    submitconfig();
-}
 
 //(4) 2 5 10 14
 //(5) 2 5 10 12
@@ -97,25 +99,25 @@ submitSelectors.onclick = function (){
 //(7) 2 5 08 09
 //(8) 2 5 07 09
 function sizetodepth(size, dif){
-    if(dif == "easy"){
+    if(dif == "Easy"){
         if(size == 4)      difficulty = 2;
         else if(size == 5) difficulty = 2;
         else if(size == 6) difficulty = 2;
         else if(size == 7) difficulty = 2;
         else               difficulty = 2;
-    }else if(dif == "medium"){
+    }else if(dif == "Medium"){
         if(size == 4)      difficulty = 5;
         else if(size == 5) difficulty = 5;
         else if(size == 6) difficulty = 5;
         else if(size == 7) difficulty = 5;
-        else                difficulty = 5;
-    }else if(dif == "hard"){
+        else               difficulty = 5;
+    }else if(dif == "Hard"){
         if(size == 4)      difficulty = 10;
         else if(size == 5) difficulty = 10;
         else if(size == 6) difficulty = 9;
         else if(size == 7) difficulty = 8;
-        else                difficulty = 7;
-    }else if(dif == "hardcore (may be slow)"){
+        else               difficulty = 7;
+    }else if(dif == "Hardcore (may be slow)"){
         if(size == 4)      difficulty = 14;
         else if(size == 5) difficulty = 12;
         else if(size == 6) difficulty = 10;
