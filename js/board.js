@@ -11,6 +11,8 @@ function logmsg(currentCol, color, str){
     p.innerHTML = "Move " + np +": " + str + " played on the column " + currentCol;
     p.style.color = color;
     logDiv.appendChild(p);
+    
+    logDiv.scrollTop = logDiv.scrollHeight; //always have the scroll down on the log of the plays
 }
 
 function update_board_pos(currentRow, currentCol){

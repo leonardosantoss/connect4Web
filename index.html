@@ -3,10 +3,15 @@
     <head>
         <title>Connect 4 game</title>
         <meta charset="UTF-8">
-        <link type="text/css" rel="stylesheet" href="style.css" /> 
-        <link type="text/css" rel="stylesheet" href="header.css" /> 
-        <link type="text/css" rel="stylesheet" href="board.css" />
-        <link type="text/css" rel="stylesheet" href="modals.css" />
+        <link type="text/css" rel="stylesheet" href="css/style.css" /> 
+        <link type="text/css" rel="stylesheet" href="css/header.css" /> 
+        <link type="text/css" rel="stylesheet" href="css/board.css" />
+        <link type="text/css" rel="stylesheet" href="css/modals.css" />
+
+        <script src="js/utilities.js"></script>
+        <script src="js/ia.js"></script>
+        <script src="js/board.js"></script>
+        <script src="js/script.js"></script>
         
         
     </head>
@@ -107,10 +112,22 @@
             <tr>
                 <td><p class="pChoose">Size:</p></td>
                 <td>
-                    <input class = "numberoption" type="number" min="4" max="8" value="5" id="sizeRow">
+                    <select class="numberoption" size = 1  id="sizeRow">
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                    </select>
                 </td>
                 <td>
-                    <input class = "numberoption" type="number" min="4" max="8" value="5" id="sizeCol">
+                    <select class="numberoption" size = 1  id="sizeCol">
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                    </select>
                 </td>
             </tr>
             <tr>
@@ -121,7 +138,7 @@
                         <option>Medium</option>
                         <option>Hard</option>
                         <option>Hardcore (may be slow)</option>
-                    </select></td>
+                    </select>
                 </td>
             </tr>
             <tr>
@@ -158,12 +175,6 @@
     <div class="thinking" id="thinking">Thinking...</div>
 
 </div>
-
-
-    <script src="utilities.js"></script>
-    <script src="ia.js"></script>
-    <script src="board.js"></script>
-    <script src="script.js"></script>
     
     </body>
     

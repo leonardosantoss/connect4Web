@@ -17,7 +17,7 @@
     border: 3px solid gray;
     width: 80%;
     height: 200px;
-    overflow: auto;
+    
 }
 
 .modal-content-profile{
@@ -27,6 +27,8 @@
 
 .modal-content-score {
     height: 65%;
+    width: 500px;
+    overflow: auto;
 }
 
 .profile-li {
@@ -79,4 +81,8 @@
 
 #usernameLogin{
     width: 200px;
+}
+
+.tdScore {
+    width: 100px;
 }

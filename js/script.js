@@ -15,6 +15,7 @@ window.onload = function (){
     const instructionsSpan = document.getElementById('instructionsSpan'); // element that closes the modal
     const profileSpan = document.getElementById('profileSpan'); // element that closes the modal
     const scoreSpan = document.getElementById('scoreSpan'); // element that closes the modal
+    const giveUpButton = document.getElementById('giveup');
 
     const submitSelectors = document.getElementById('submitSelectors');
     const submitLogin = document.getElementById('submitLoginId');
@@ -36,6 +37,17 @@ window.onload = function (){
     scoreButton.onclick = function () {
         displayScoreBoard();
         scoreModal.style.display = "block";
+    }
+
+    giveUpButton.onclick = function () { 
+        if(againstBot){
+            addWin("Bot");
+            addLoss("Player1");
+        }
+        else{
+            addWin("Player2");
+            addLoss("Player1");
+        }
     }
 
     // closes the modal after clicking the x 
@@ -75,7 +87,6 @@ window.onload = function (){
         allButHeaderDiv.style.display = "block"
         loginDiv.style.display = "none";
         nav.style.display = "block";
-        console.log(username, password);
         submitconfig();
     }
 
@@ -84,8 +95,11 @@ window.onload = function (){
         loginDiv.style.display = "block";
         allButHeaderDiv.style.display = "none";
         console.log("User just logged out");
-    }
+    }    
 
+    allButHeaderDiv.style.display = "block"
+    loginDiv.style.display = "none";
+    nav.style.display = "block";
 
     initScoreboard();
     submitconfig();
@@ -117,11 +131,6 @@ function submitconfig(){
     np = 0;
     row = Number(sizeRow);
     column = Number(sizeCol);
-
-    if(row > 8 || row <4 || column > 8 || column < 4){
-        alert("Invalid game board size!\nRow size should be between 4 and 8. \nColumn size should be between 4 and 8.");
-        return;
-    }
 
     vec_np = [];
     for(let i = 0; i<column; i++) vec_np.push(0);
