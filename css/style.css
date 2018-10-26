@@ -23,7 +23,7 @@ body {
     margin: 1%;
     display: flex;
     float: left;
-    overflow: scroll;
+    overflow: auto;
 }
 
 .logDiv {
