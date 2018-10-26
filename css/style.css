@@ -26,6 +26,20 @@ body {
     overflow: auto;
 }
 
+.loginDiv {
+    width: 40%;
+    margin:auto;
+    left:29%;
+    top: 15%;
+    height: 500px;
+    border: 10px solid lightblue;
+    border-radius: 5px;
+    display: flex;
+    overflow: scroll;
+    display: inline-block;
+    position: absolute;
+}
+
 .logDiv {
     background-color: lightgrey;
     margin: 1%;
@@ -71,6 +85,16 @@ body {
    
 }
 
+.submitLogin {
+    font-size: 25px;
+    line-height: 18px;
+    float:right;
+    margin-right: 15px;
+    display:block;
+    margin-bottom: 80px;
+    margin-right:50px;
+}
+
 .selectoption {
     width: 90%;
 }
@@ -87,5 +111,18 @@ body {
     position: absolute;
     bottom: 0;
     display: none;
+}
+
+.allButHeaderDiv {
+    display: none;
+}
+
+.h2login{
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    border-bottom: 1px solid black;
+    margin-right: 4%;
+    margin-left: 4%;
+    
 }
 

@@ -15,6 +15,12 @@ window.onload = function (){
     const scoreSpan = document.getElementById('scoreSpan'); // element that closes the modal
 
     const submitSelectors = document.getElementById('submitSelectors');
+    const submitLogin = document.getElementById('submitLoginId');
+    const loginDiv = document.getElementById('loginDivId');
+    const nav = document.getElementById('nav');
+    const logout = document.getElementById('logout');
+    const allButHeaderDiv = document.getElementById('allButHeaderDivId');
+    
 
     // open the modal after user clicks on the button
     instructionsButton.onclick = function () {
@@ -47,6 +53,33 @@ window.onload = function (){
     // After clicking the submit button, handles all the selections made by the user
     submitSelectors.onclick = function (){
         submitconfig();
+    }
+
+    submitLogin.onclick = function (){
+        const username = document.getElementById('usernameLogin').value;
+        const password = document.getElementById('passwordLogin').value;
+        while(username === "" || password === ""){
+            // proper validation will be made when server gets implemented
+            // for now we will not accept only when fields are left empty 
+            alert("Username or password not valid. Fields can't be empty!");
+            username = document.getElementById('usernameLogin').value;
+            password = document.getElementById('passwordLogin').value;
+        }
+
+
+        document.getElementById('usernameLogin').value = "";
+        document.getElementById('passwordLogin').value = "";
+        allButHeaderDiv.style.display = "block"
+        loginDiv.style.display = "none";
+        nav.style.display = "block";
+        console.log(username, password);
+    }
+
+    logout.onclick = function() {
+        nav.style.display = "none";
+        loginDiv.style.display = "block";
+        allButHeaderDiv.style.display = "none";
+        console.log("User just logged out");
     }
 
     submitconfig();
