@@ -203,8 +203,6 @@ function submitconfig(){
     const dif = document.getElementById("ia").value;
     sizetodepth(size, dif);
 
-    document.getElementById("thinking").style.display = "none";
-
     if(optionAgainst == "Bot")
         againstBot = true;
     else againstBot = false;
