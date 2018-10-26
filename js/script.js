@@ -1,6 +1,6 @@
 var gameMatrix, row, column, playerColor, opponentColor, difficulty, againstBot;
 var score = [];
-
+var player1name, player2name;
 
 // button for the instructions option
 window.onload = function (){
@@ -51,26 +51,26 @@ window.onload = function (){
         fwin = true;
         if(againstBot){
             if(!player){
-                logwin("Player1", true);
-                addWin("Player1");
+                logwin(player1name, true);
+                addWin(player1name);
                 addLoss("Bot");
             } 
             else{
                 logwin("Bot", true);
                 addWin("Bot");
-                addLoss("Player1");
+                addLoss(player1name);
             }
         }
         else{
             if(!player){
-                logwin("Player1", true);
-                addWin("Player1");
-                addLoss("Player2");
+                logwin(player1name, true);
+                addWin(player1name);
+                addLoss(player2name);
             }
             else{
-                logwin("Player2", true);
-                addWin("Player2");
-                addLoss("Player1");
+                logwin(player2name, true);
+                addWin(player2name);
+                addLoss(player1name);
             }
         }
     }
@@ -116,6 +116,9 @@ window.onload = function (){
         allButHeaderDiv.style.display = "block"
         loginDiv.style.display = "none";
         nav.style.display = "block";
+        
+        player1name = username;
+        initScoreboard();
         submitconfig();
     }
 
@@ -126,7 +129,26 @@ window.onload = function (){
         console.log("User just logged out");
     }    
 
-    initScoreboard();
+    document.getElementById('against').onchange = function() {
+        const against = document.getElementById('against');
+        const optionAgainst = against.options[against.selectedIndex].text;
+
+        if(optionAgainst == "Bot"){
+            document.getElementById("ia").disabled = false;
+            document.getElementById("nameop").disabled = true;
+        }
+        else{
+            document.getElementById("ia").disabled = true;
+            document.getElementById("nameop").disabled = false;
+        }
+        
+    }
+
+    document.getElementById("nameop").onfocus = function() {
+        this.style.backgroundColor = "white";
+        nameop.placeholder = "";
+    }
+
     submitconfig();
 }
 
@@ -140,6 +162,17 @@ function submitconfig(){
 
     const whoStarts = document.getElementById('whoStarts');
     const optionWhoStarts = whoStarts.options[whoStarts.selectedIndex].text;
+
+    const nameop = document.getElementById("nameop");
+    player2name = nameop.value;
+    console.log(nameop.value);
+    console.log(player2name);
+
+    if(player2name == "" && optionAgainst != "Bot"){
+        nameop.placeholder = "Invalid Name!";
+        nameop.style.backgroundColor = "lightcoral";
+        return;
+    }
 
     playerColor = document.getElementById('colorme').value;
     opponentColor = document.getElementById('colorop').value;
@@ -184,11 +217,15 @@ function submitconfig(){
     }
 }
 
+function checkscorename(playerName){
+    const obj = score.find(obj => obj.name == playerName);
+    if(obj) return;
+    else score.push(new Score(playerName)); 
+}
+
 function initScoreboard(){
-  score.push(new Score("Bot"));
-  score.push(new Score("Player1"));
-  score.push(new Score("Player2"));
-    
+    checkscorename("Bot");
+    checkscorename(player1name);
 }
 
 function Score(name) {

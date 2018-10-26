@@ -116,10 +116,10 @@ function update_board_pos(currentRow, currentCol) {
         circle.style.background = playerColor;
 
         win = checkWin(currentRow, currentCol, "X");
-        if (win) highlightwin(currentRow, currentCol, "x");
+        if (win) highlightwin(currentRow, currentCol, "X");
 
         if (againstBot) logmsg(currentCol, playerColor, "You");
-        else logmsg(currentCol, playerColor, "Player1");
+        else logmsg(currentCol, playerColor, player1name);
     }
     else {
         play(currentRow, currentCol, "O");
@@ -129,32 +129,32 @@ function update_board_pos(currentRow, currentCol) {
         if (win) highlightwin(currentRow, currentCol, "O");
 
         if (againstBot) logmsg(currentCol, opponentColor, "Bot");
-        else logmsg(currentCol, opponentColor, "Player2");
+        else logmsg(currentCol, opponentColor, player2name);
     }
 
     if (win) {                        //WIN
         if (againstBot) {
             if (player) {
-                logwin("Player1", true);
-                addWin("Player1");
+                logwin(player1name, true);
+                addWin(player1name);
                 addLoss("Bot");
             }
             else {
                 logwin("Bot", true);
                 addWin("Bot");
-                addLoss("Player1");
+                addLoss(player1name);
             }
         }
         else {
             if (player) {
-                logwin("Player1", true);
-                addWin("Player1");
-                addLoss("Player2");
+                logwin(player1name, true);
+                addWin(player1name);
+                addLoss(player2name);
             }
             else {
-                logwin("Player2", true);
-                addWin("Player2");
-                addLoss("Player1");
+                logwin(player2name, true);
+                addWin(player2name);
+                addLoss(player1name);
             }
         }
 
@@ -164,13 +164,13 @@ function update_board_pos(currentRow, currentCol) {
 
         if (againstBot) {
             logwin("", false);
-            addTie("Player1");
+            addTie(player1name);
             addTie("Bot");
         }
         else {
             logwin("", false);
-            addTie("Player1");
-            addTie("Player2");
+            addTie(player1name);
+            addTie(player2name);
         }
     }
     return false;
@@ -196,17 +196,20 @@ function playBot() {
 }
 
 function addTie(playerName) {
-    let obj = score.find(obj => obj.name == playerName);
+    checkscorename(playerName);
+    const obj = score.find(obj => obj.name == playerName);
     obj.ties++;
 }
 
 function addWin(playerName) {
-    let obj = score.find(obj => obj.name == playerName);
+    checkscorename(playerName);
+    const obj = score.find(obj => obj.name == playerName);
     obj.wins++;
 }
 
 function addLoss(playerName) {
-    let obj = score.find(obj => obj.name == playerName);
+    checkscorename(playerName);
+    const obj = score.find(obj => obj.name == playerName);
     obj.losses++;
 }
 
