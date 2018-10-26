@@ -32,16 +32,46 @@ function update_board_pos(currentRow, currentCol){
         else logmsg(currentCol, opponentColor, "Player2");
     }
     
-    if(win){
+    if(win){                        //WIN
         setTimeout(function() {
             alert("Win");
         }, 0);
+
+        if(againstBot){
+            if(player){
+                addWin("Player1");
+                addLoss("Bot");
+            } 
+            else{
+                addWin("Bot");
+                addLoss("Player1");
+            }
+        }
+        else{
+            if(player){
+                addWin("Player1");
+                addLoss("Player2");
+            }
+            else{
+                addWin("Player2");
+                addLoss("Player1");
+            }
+        }
+        
         return true;
     }
-    else if(np == column*row){
+    else if(np == column*row){      //DRAW
         setTimeout(function() {
             alert("Draw");
         }, 0);
+        if(againstBot){
+           addTie("Player1");
+           addTie("Bot");
+        }
+        else{
+            addTie("Player1");
+            addTie("Player2");
+        }
     }
     return false;
 }
@@ -63,6 +93,21 @@ function playBot(){
     const win = update_board_pos(currentRow, currentCol);                    
     player = !player;
     if(win) fwin = true;
+}
+
+function addTie(playerName){
+    let obj = score.find(obj => obj.name == playerName);
+    obj.ties++;
+}
+
+function addWin(playerName){
+    let obj = score.find(obj => obj.name == playerName);
+    obj.wins++;
+}
+
+function addLoss(playerName){
+    let obj = score.find(obj => obj.name == playerName);
+    obj.losses++;
 }
 
 function generateBoard(){

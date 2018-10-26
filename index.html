@@ -66,9 +66,18 @@
     </div>
 
     <div id="scoreModal" class="modal">
-        <div class ="modal-content">
+        <div id="modal-contentId" class ="modal-content modal-content-score">
             <span id="scoreSpan" class="close">&times;</span>
-            <p><b>Scoreboard</b></p>
+            <h2>Scoreboard</h2>
+
+            <table id="scoreTable">
+                <tr>
+                    <td><p class="pScore">Name</p></td>
+                    <td><p class="pScore">Wins</p></td>
+                    <td><p class="pScore">Ties</p></td>
+                    <td><p class="pScore">Losses</p></td>
+                </tr>
+            </table>
             
             <div id="scorediv"></div>
         </div>

@@ -17,11 +17,16 @@
     border: 3px solid gray;
     width: 80%;
     height: 200px;
+    overflow: auto;
 }
 
 .modal-content-profile{
     height:200px;
     width: 800px;
+}
+
+.modal-content-score {
+    height: 65%;
 }
 
 .profile-li {

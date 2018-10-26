@@ -1,4 +1,6 @@
 var gameMatrix, row, column, playerColor, opponentColor, difficulty, againstBot;
+var score = [];
+
 
 // button for the instructions option
 window.onload = function (){
@@ -32,6 +34,7 @@ window.onload = function (){
     }
 
     scoreButton.onclick = function () {
+        displayScoreBoard();
         scoreModal.style.display = "block";
     }
 
@@ -82,6 +85,8 @@ window.onload = function (){
         console.log("User just logged out");
     }
 
+
+    initScoreboard();
     submitconfig();
 }
 
@@ -144,6 +149,80 @@ function submitconfig(){
     }
 }
 
+function initScoreboard(){
+  score.push(new Score("Bot"));
+  score.push(new Score("Player1"));
+  score.push(new Score("Player2"));
+    
+}
+
+function Score(name) {
+    this.name = name;
+    this.wins = 0;
+    this.ties = 0;
+    this.losses = 0;
+}
+
+function addScoreboardTitles(title, tableRow) {
+    var td = document.createElement('td');
+    var p = document.createElement('p');
+    p.innerHTML = title;
+    p.className = "pScore";
+    td.appendChild(p);
+    tableRow.appendChild(td)
+}
+
+function displayScoreBoard() {
+    const scoreTable = document.getElementById('scoreTable');
+    if(scoreTable != null){
+        scoreTable.innerHTML = "";
+    }
+    var tr = document.createElement('tr');
+    addScoreboardTitles("Name", tr);
+    addScoreboardTitles("Wins", tr);
+    addScoreboardTitles("Ties", tr);
+    addScoreboardTitles("Losses", tr);
+    scoreTable.appendChild(tr);
+
+    for(var k in score){
+        tr = document.createElement('tr');
+        tr.className = "trScore";
+
+        var td = document.createElement('td');
+        td.className = "tdScore";
+        var p = document.createElement('p');
+        p.innerHTML = score[k].name;
+        td.appendChild(p);
+        tr.appendChild(td);
+        
+
+        td = document.createElement('td');
+        td.className = "tdScore";
+        p = document.createElement('p');
+        p.innerHTML = score[k].wins;
+        td.appendChild(p);
+        tr.appendChild(td);
+        
+
+        td = document.createElement('td');
+        td.className = "tdScore";
+        p = document.createElement('p');
+        p.innerHTML = score[k].ties;
+        td.appendChild(p);
+        tr.appendChild(td);
+
+
+        td = document.createElement('td');
+        td.className = "tdScore";
+        p = document.createElement('p');
+        p.innerHTML = score[k].losses;
+        td.appendChild(p);
+        tr.appendChild(td);
+
+        scoreTable.appendChild(tr);
+        
+    }
+}
 //(4) 2 5 10 14
 //(5) 2 5 10 12
 //(6) 2 5 09 10
