@@ -7,15 +7,19 @@ window.onload = function (){
     const instructionsModal = document.getElementById('instructionsModal'); //modal
     const profileModal = document.getElementById('profileModal'); //modal
     const scoreModal = document.getElementById('scoreModal'); //modal
+    const aboutModal = document.getElementById('aboutModal');
 
     const instructionsButton = document.getElementById('instructionsButton'); //button
     const profileButton = document.getElementById('profileButton'); // profile
     const scoreButton = document.getElementById('scoreButton'); //score
+    const aboutButton = document.getElementById('about'); 
+    const giveUpButton = document.getElementById('giveup');
 
     const instructionsSpan = document.getElementById('instructionsSpan'); // element that closes the modal
     const profileSpan = document.getElementById('profileSpan'); // element that closes the modal
     const scoreSpan = document.getElementById('scoreSpan'); // element that closes the modal
-    const giveUpButton = document.getElementById('giveup');
+    const aboutSpan = this.document.getElementById('aboutSpan');
+    
 
     const submitSelectors = document.getElementById('submitSelectors');
     const submitLogin = document.getElementById('submitLoginId');
@@ -37,6 +41,10 @@ window.onload = function (){
     scoreButton.onclick = function () {
         displayScoreBoard();
         scoreModal.style.display = "block";
+    }
+
+    aboutButton.onclick = function () {
+        aboutModal.style.display = "block";
     }
 
     giveUpButton.onclick = function () { 
@@ -80,6 +88,10 @@ window.onload = function (){
     // closes the modal after clicking the x 
     scoreSpan.onclick = function () {
         scoreModal.style.display = "none";
+    }
+
+    aboutSpan.onclick = function () {
+        aboutModal.style.display = "none";
     }
 
     // After clicking the submit button, handles all the selections made by the user
