@@ -126,10 +126,6 @@ window.onload = function (){
         console.log("User just logged out");
     }    
 
-    allButHeaderDiv.style.display = "block"
-    loginDiv.style.display = "none";
-    nav.style.display = "block";
-
     initScoreboard();
     submitconfig();
 }
