@@ -43,18 +43,6 @@
     display: inline-block;
 }
 
-.login-li {
-    margin-bottom: 5px;
-    margin-top:20px;
-    margin-right: 50px;  
-    display: inline-block;
-}
-
-.login-text {
-    width: 110px;
-    display: inline-block;
-}
-
 /* The Close Button */
 .close {
     color: gray;
@@ -73,14 +61,6 @@
 
 .instructions {
     text-align: center;
-}
-
-#passwordLogin{
-    width: 200px;
-}
-
-#usernameLogin{
-    width: 200px;
 }
 
 .tdScore {

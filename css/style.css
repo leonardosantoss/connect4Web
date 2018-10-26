@@ -147,3 +147,19 @@ body {
 }
 
 
+.login-li {
+    margin-bottom: 5px;
+    margin-top:20px;
+    margin-right: 50px;  
+    display: inline-block;
+    width: 100%;
+}
+
+.login-text {
+    width: 110px;
+    display: inline-block;
+}
+
+.login-input {
+    width: 60%;
+}
