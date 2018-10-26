@@ -1,0 +1,148 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f3f3f3
+}
+
+.buttonsDiv {
+    height: 600px;
+    width: 15%;
+    border: 10px solid lightblue;
+    border-radius: 5px;
+
+    margin: 1%;
+    margin-left: 5%;
+
+    float: left;
+}
+
+.connect4div {
+    width: 50%;
+    height: 600px;
+    border: 10px solid lightblue;
+    border-radius: 5px;
+    margin: 1%;
+    display: flex;
+    float: left;
+    overflow: auto;
+}
+
+.loginDiv {
+    width: 40%;
+    margin:auto;
+    left:29%;
+    top: 15%;
+    height: 500px;
+    border: 10px solid lightblue;
+    border-radius: 5px;
+    display: inline-block;
+    position: absolute;
+}
+
+.logDiv {
+    background-color: lightgrey;
+    margin: 1%;
+    height: 550px;
+    width: 15%;
+
+    text-align: center;
+    float: left;
+    border: 10px solid lightblue; 
+    border-radius: 5px;
+
+    overflow: auto;
+    scroll-behavior: auto;
+}
+
+.giveup {
+    height: 35px;
+    width: 16.5%;
+    text-align: center;
+    float: left;
+    padding: 0px;
+    margin: 1%;
+    margin-top: 0;
+}
+
+.pChoose {
+    font-size: 14px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.pScore{
+    font-size: 16px;
+    font-family: 'Times New Roman', Times, serif;
+
+}
+
+.tableSelector {
+    width: 100%;
+    height: 85%;
+}
+
+.submitSelector {
+    font-size: 15px;
+    line-height: 18px;
+    float:right;
+    margin-right: 15px;
+    display:block;
+
+}
+
+.submitProfile {
+    font-size: 25px;
+    line-height: 18px;
+    float:right;
+    margin-right: 15px;
+    display:block;
+    margin-bottom: 80px;
+    margin-right:50px;
+   
+}
+
+.submitLogin {
+    font-size: 25px;
+    line-height: 18px;
+    float:right;
+    margin-right: 15px;
+    display:block;
+    margin-bottom: 80px;
+    margin-right:50px;
+}
+
+.selectoption {
+    width: 90%;
+}
+
+.coloroption {
+    width: 37%;
+}
+
+.numberoption {
+    width: 80%;
+}
+
+.thinking{
+    position: absolute;
+    bottom: 0;
+    display: none;
+}
+
+.allButHeaderDiv {
+    display: none;
+}
+
+.h2login{
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    border-bottom: 1px solid black;
+    margin-right: 4%;
+    margin-left: 4%;
+    
+}
+
+.tdScore {
+    width: 100px;
+}
+
+
+
