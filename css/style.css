@@ -34,8 +34,6 @@ body {
     height: 500px;
     border: 10px solid lightblue;
     border-radius: 5px;
-    display: flex;
-    overflow: scroll;
     display: inline-block;
     position: absolute;
 }

@@ -73,6 +73,7 @@ window.onload = function (){
         loginDiv.style.display = "none";
         nav.style.display = "block";
         console.log(username, password);
+        submitconfig();
     }
 
     logout.onclick = function() {
