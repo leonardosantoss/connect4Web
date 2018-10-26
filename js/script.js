@@ -1,4 +1,4 @@
-var gameMatrix, row, column, playerColor, opponentColor, difficulty;
+var gameMatrix, row, column, playerColor, opponentColor, difficulty, againstBot;
 
 // button for the instructions option
 window.onload = function (){
@@ -79,18 +79,36 @@ function submitconfig(){
     row = Number(sizeRow);
     column = Number(sizeCol);
 
+    if(row > 8 || row <4 || column > 8 || column < 4){
+        alert("Invalid game board size!\nRow size should be between 4 and 8. \nColumn size should be between 4 and 8.");
+        return;
+    }
+
     vec_np = [];
     for(let i = 0; i<column; i++) vec_np.push(0);
     
     generateBoard(); //row and column were strings, make sure to change to number
     gameMatrix = createMatrix();
-    player = true;
     
+    fwin = false;
+
     const size = column;
     const dif = document.getElementById("ia").value;
     sizetodepth(size, dif);
 
     document.getElementById("thinking").style.display = "none";
+
+    if(optionAgainst == "Bot")
+        againstBot = true;
+    else againstBot = false;
+
+    if(optionWhoStarts == "Me"){
+        player = true;
+    }
+    else {
+        player = false;
+        if(againstBot) playBot();
+    }
 }
 
 //(4) 2 5 10 14

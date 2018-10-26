@@ -2,7 +2,7 @@ var player; // choose player that starts
 const unit_vector = [[1,0], [0,1], [-1,-1], [-1,1]]; // horizontal, vertical, negative diagonal, positive diagonal
 var bestplayCol;
 var vec_np;
-
+var fwin;
 
 function logmsg(currentCol, color, str){
     const logDiv = document.getElementById('logDiv');
@@ -21,13 +21,15 @@ function update_board_pos(currentRow, currentCol){
         play(currentRow,currentCol, "X");
         circle.style.background = playerColor;
         win = checkWin(currentRow, currentCol, "X");
-        logmsg(currentCol, playerColor, "You");
+        if(againstBot) logmsg(currentCol, playerColor, "You");
+        else logmsg(currentCol, playerColor, "Player1");
     }
     else{
         play(currentRow,currentCol, "O");
         circle.style.background = opponentColor;
         win = checkWin(currentRow, currentCol, "O");
-        logmsg(currentCol, opponentColor, "Bot");
+        if (againstBot) logmsg(currentCol, opponentColor, "Bot");
+        else logmsg(currentCol, opponentColor, "Player2");
     }
     
     if(win){
@@ -42,6 +44,25 @@ function update_board_pos(currentRow, currentCol){
         }, 0);
     }
     return false;
+}
+
+function playHuman(currentRow, currentCol) {
+    if(fwin) return;
+
+    const win = update_board_pos(currentRow, currentCol);                    
+    player = !player;
+    if(win) fwin = true;
+}
+
+function playBot(){
+    if(fwin) return;
+
+    const currentCol = alfabeta(difficulty);
+    const currentRow = findRow(currentCol);
+
+    const win = update_board_pos(currentRow, currentCol);                    
+    player = !player;
+    if(win) fwin = true;
 }
 
 function generateBoard(){
@@ -76,27 +97,14 @@ function generateBoard(){
                 }
             }
             td.onclick = function (){ 
+                if((!player && againstBot) || fwin) return;
+
                 let currentCol = this.id % column;
                 let currentRow = findRow(currentCol);
                 
                 if(currentRow !== -1){
-                    console.log("player: " + currentRow + " " + currentCol);
-
-                    let win = update_board_pos(currentRow, currentCol);                    
-                    player = !player;
-
-                    //document.getElementById("thinking").style.display = "block";
-                    currentCol = alfabeta(difficulty);
-                    //document.getElementById("thinking").style.display = "none";
-
-                    currentRow = findRow(currentCol);
-
-                    if(currentRow != -1 && !win){
-                        console.log("bot: " + currentRow + " " + currentCol);
-
-                        update_board_pos(currentRow, currentCol);                    
-                        player = !player;
-                    }
+                    playHuman(currentRow, currentCol);
+                    if(againstBot) playBot();
                 }
                 
             }
@@ -150,6 +158,7 @@ function findRow(currentCol){
 
 
 function checkWin(currentRow, currentCol, typeToCheck){
+    if(currentRow == undefined || currentCol == undefined) return false;
     let sum = 0;
     let x;
     
