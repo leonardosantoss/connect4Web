@@ -48,6 +48,7 @@ window.onload = function (){
     }
 
     giveUpButton.onclick = function () { 
+        if(fwin) return;
         fwin = true;
         if(againstBot){
             if(!player){
