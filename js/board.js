@@ -7,9 +7,22 @@ var fwin;
 function logmsg(currentCol, color, str){
     const logDiv = document.getElementById('logDiv');
     const p = document.createElement('p');
-    p.className = "logmsg";
     p.innerHTML = "Move " + np +": " + str + " played on the column " + currentCol;
     p.style.color = color;
+    logDiv.appendChild(p);
+    
+    logDiv.scrollTop = logDiv.scrollHeight; //always have the scroll down on the log of the plays
+}
+
+function logwin(player, win){
+    const logDiv = document.getElementById('logDiv');
+    const p = document.createElement('h1');
+
+    if(win) p.innerHTML = player + " Wins!";
+    else p.innerHTML = "Draw!";
+
+    p.style.color = "black";
+    p.style.fontWeight = "strong";
     logDiv.appendChild(p);
     
     logDiv.scrollTop = logDiv.scrollHeight; //always have the scroll down on the log of the plays
@@ -23,6 +36,7 @@ function update_board_pos(currentRow, currentCol){
         play(currentRow,currentCol, "X");
         circle.style.background = playerColor;
         win = checkWin(currentRow, currentCol, "X");
+
         if(againstBot) logmsg(currentCol, playerColor, "You");
         else logmsg(currentCol, playerColor, "Player1");
     }
@@ -30,31 +44,32 @@ function update_board_pos(currentRow, currentCol){
         play(currentRow,currentCol, "O");
         circle.style.background = opponentColor;
         win = checkWin(currentRow, currentCol, "O");
+
         if (againstBot) logmsg(currentCol, opponentColor, "Bot");
         else logmsg(currentCol, opponentColor, "Player2");
     }
     
     if(win){                        //WIN
-        setTimeout(function() {
-            alert("Win");
-        }, 0);
-
         if(againstBot){
             if(player){
+                logwin("Player1", true);
                 addWin("Player1");
                 addLoss("Bot");
             } 
             else{
+                logwin("Bot", true);
                 addWin("Bot");
                 addLoss("Player1");
             }
         }
         else{
             if(player){
+                logwin("Player1", true);
                 addWin("Player1");
                 addLoss("Player2");
             }
             else{
+                logwin("Player2", true);
                 addWin("Player2");
                 addLoss("Player1");
             }
@@ -63,14 +78,14 @@ function update_board_pos(currentRow, currentCol){
         return true;
     }
     else if(np == column*row){      //DRAW
-        setTimeout(function() {
-            alert("Draw");
-        }, 0);
+
         if(againstBot){
-           addTie("Player1");
-           addTie("Bot");
+            logwin("", false);
+            addTie("Player1");
+            addTie("Bot");
         }
         else{
+            logwin("", false);
             addTie("Player1");
             addTie("Player2");
         }

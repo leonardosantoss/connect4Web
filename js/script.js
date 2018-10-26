@@ -40,13 +40,30 @@ window.onload = function (){
     }
 
     giveUpButton.onclick = function () { 
+        fwin = true;
         if(againstBot){
-            addWin("Bot");
-            addLoss("Player1");
+            if(!player){
+                logwin("Player1", true);
+                addWin("Player1");
+                addLoss("Bot");
+            } 
+            else{
+                logwin("Bot", true);
+                addWin("Bot");
+                addLoss("Player1");
+            }
         }
         else{
-            addWin("Player2");
-            addLoss("Player1");
+            if(!player){
+                logwin("Player1", true);
+                addWin("Player1");
+                addLoss("Player2");
+            }
+            else{
+                logwin("Player2", true);
+                addWin("Player2");
+                addLoss("Player1");
+            }
         }
     }
 
